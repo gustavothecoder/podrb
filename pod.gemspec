@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Gustavo Ribeiro"]
   spec.email = ["g2_ribeiro@hotmail.com"]
 
-  spec.summary = "Minimalist CLI to manage padcasts"
+  spec.summary = "Minimalist CLI to manage podcasts"
   spec.homepage = "https://github.com/gustavothecoder/pod"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"

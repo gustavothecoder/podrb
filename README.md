@@ -22,6 +22,7 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 ### TODO List
 -[x] Input interpretation
+     -[x] Create abstraction for `Open3`
 -[ ] `pod help/-h/--help` command
 -[ ] `pod version/-v/--version` command
 -[ ] `pod init` command

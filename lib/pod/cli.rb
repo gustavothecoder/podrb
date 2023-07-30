@@ -9,7 +9,8 @@ module Pod
       true
     end
 
-    desc 'version', 'displays the pod version'
+    desc 'version', 'Displays the pod version'
+    map %w[-V --version] => :version
     def version
       puts VERSION
     end

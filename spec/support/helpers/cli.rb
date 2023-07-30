@@ -7,7 +7,9 @@ module Helpers
     extend self
 
     def run_cmd(cmd)
-      Open3.capture3(cmd)
+      stdout, stderr, _ = Open3.capture3(cmd)
+
+      (stdout.empty? ? stderr : stdout).chomp
     end
   end
 end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'open3'
 
 RSpec.describe Pod::CLI do

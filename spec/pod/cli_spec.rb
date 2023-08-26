@@ -1,20 +1,12 @@
 # frozen_string_literal: true
 
-require_relative '../support/helpers/cli.rb'
+require_relative '../support/test_helpers.rb'
 
 RSpec.describe Pod::CLI do
   describe 'input interpretation' do
-    context 'when input is valid' do
-      it 'executes the command' do
-        result = Helpers::CLI.run_cmd('pod version')
-
-        expect(result).to eq(Pod::VERSION)
-      end
-    end
-
     context 'when the input is invalid' do
       it 'tells the user that the command was not found' do
-        result = Helpers::CLI.run_cmd('pod invalid')
+        result = TestHelpers::CLI.run_cmd('pod invalid')
 
         expect(result).to eq('Could not find command "invalid".')
       end
@@ -22,16 +14,27 @@ RSpec.describe Pod::CLI do
   end
 
   describe 'version command' do
-    context 'when an alias is used' do
-      it 'returns the pod version' do
-        original_result = Helpers::CLI.run_cmd('pod version')
+    it 'returns the pod version' do
+      original_result = TestHelpers::CLI.run_cmd('pod version')
+      alias_result1 = TestHelpers::CLI.run_cmd('pod -V')
+      alias_result2 = TestHelpers::CLI.run_cmd('pod --version')
 
-        alias_result1 = Helpers::CLI.run_cmd('pod -V')
-        alias_result2 = Helpers::CLI.run_cmd('pod --version')
+      expect(original_result).to eq(Pod::VERSION)
+      expect(alias_result1).to eq(original_result)
+      expect(alias_result2).to eq(original_result)
+    end
+  end
 
-        expect(alias_result1).to eq(original_result)
-        expect(alias_result2).to eq(original_result)
-      end
+  describe 'init command' do
+    it 'creates the initial config files' do
+      expected_output = <<~OUTPUT
+        Creating config files...
+        Pod successfully initialized!
+      OUTPUT
+
+      result = TestHelpers::CLI.run_cmd('pod init')
+
+      expect(result).to eq(expected_output.chomp)
     end
   end
 end

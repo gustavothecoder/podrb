@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'fileutils'
+require "fileutils"
 
 module Pod
   module Commands
     class Init < Base
       def call
-        home_dir = ENV['HOME']
+        home_dir = ENV["HOME"]
         return home_not_found if home_dir.nil?
 
-        pod_config_dir = home_dir + '/.config/pod'
+        pod_config_dir = home_dir + "/.config/pod"
         return already_initialized if Dir.exist?(pod_config_dir)
 
         FileUtils.mkdir_p(pod_config_dir)

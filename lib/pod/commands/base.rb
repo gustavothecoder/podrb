@@ -15,11 +15,11 @@ module Pod
       private
 
       def build_success_response(details:)
-        { status: :success, details: details }
+        {status: :success, details: details}
       end
 
       def build_failure_response(details:)
-        { status: :failure, details: details }
+        {status: :failure, details: details}
       end
     end
   end

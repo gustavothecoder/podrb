@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'thor'
+require "thor"
 
-require_relative './commands.rb'
-require_relative './outputs/text.rb'
-require_relative './storage/sql.rb'
+require_relative "commands"
+require_relative "outputs/text"
+require_relative "storage/sql"
 
 module Pod
   class CLI < Thor
@@ -13,15 +13,15 @@ module Pod
       true
     end
 
-    desc 'version', 'Displays the pod version'
+    desc "version", "Displays the pod version"
     map %w[-V --version] => :version
     def version
       puts VERSION
     end
 
-    desc 'init', 'Creates the pod config files'
+    desc "init", "Creates the pod config files"
     def init
-      puts 'Creating config files...'
+      puts "Creating config files..."
 
       result = Pod::Commands::Init.call
 

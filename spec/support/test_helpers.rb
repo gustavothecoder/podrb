@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'open3'
+require "open3"
 
 module TestHelpers
   module CLI
@@ -15,14 +15,14 @@ module TestHelpers
     extend self
 
     def config_dir
-      home_dir = ENV['HOME']
-      return '' if home_dir.nil?
+      home_dir = ENV["HOME"]
+      return "" if home_dir.nil?
 
-      home_dir+ '/.config/pod'
+      home_dir + "/.config/pod"
     end
 
     def db_dir
-      config_dir + '/pod.db'
+      config_dir + "/pod.db"
     end
   end
 end

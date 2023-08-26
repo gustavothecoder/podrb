@@ -6,16 +6,6 @@ module Pod
       def initialize(context = {})
         @context = context
       end
-
-      private
-
-      def failure?
-        @context[:status] == :failure
-      end
-
-      def success?
-        @context[:status] == :success
-      end
     end
   end
 end

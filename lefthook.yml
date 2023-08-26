@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    stardardrb:
+      tags: ruby style
+      glob: "*.rb"
+      run: bundle exec standardrb --fix {all_files}

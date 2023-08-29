@@ -14,7 +14,17 @@ module Pod
 
         FileUtils.mkdir_p(pod_config_dir)
 
-        Pod::Storage::SQL.new(db: "#{pod_config_dir}/pod.db")
+        db = Pod::Storage::SQL.new(db: "#{pod_config_dir}/pod.db")
+
+        db.execute <<-SQL
+          create table podcasts (
+            id int primary key,
+            name text not null,
+            description text,
+            feed text not null,
+            website text
+          );
+        SQL
 
         success_response
       rescue SystemCallError, Pod::Storage::Exceptions::CantStartConnection

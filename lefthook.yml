@@ -4,4 +4,4 @@ pre-commit:
     stardardrb:
       tags: ruby style
       glob: "*.rb"
-      run: bundle exec standardrb --fix {all_files}
+      run: bundle exec standardrb {all_files}

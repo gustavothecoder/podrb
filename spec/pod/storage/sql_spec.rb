@@ -95,6 +95,36 @@ RSpec.describe Pod::Storage::SQL do
         }.to raise_error(Pod::Storage::Exceptions::WrongSyntax)
       end
     end
+
+    context "when an DML statement is passed, but it vialates a constraint" do
+      it "doesn't execute the statement and raises an exception" do
+        FileUtils.mkdir_p(TestHelpers::Path.config_dir)
+        db = described_class.new(db: TestHelpers::Path.db_dir)
+        db.execute <<-SQL
+          create table podcasts (
+            name text not null,
+            description text,
+            feed text not null unique,
+            website text
+          );
+        SQL
+        constraint_violation = <<-SQL
+          insert into podcasts
+          (name, description, feed, website)
+          values (
+            "Podcast",
+            "A really good podcast.",
+            "https://www.podcast.com/feed.xml",
+            "https://www.podcast.com"
+          );
+        SQL
+        db.execute(constraint_violation)
+
+        expect {
+          db.execute(constraint_violation)
+        }.to raise_error(Pod::Storage::Exceptions::ConstraintViolation)
+      end
+    end
   end
 
   describe "#query" do

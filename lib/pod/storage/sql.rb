@@ -20,6 +20,8 @@ module Pod
         result.empty? ? true : result
       rescue SQLite3::SQLException => exc
         raise Exceptions::WrongSyntax, exc.message
+      rescue SQLite3::ConstraintException => exc
+        raise Exceptions::ConstraintViolation, exc.message
       end
 
       def query(sql)
@@ -41,6 +43,8 @@ module Pod
       class CantStartConnection < Exception; end
 
       class WrongSyntax < Exception; end
+
+      class ConstraintViolation < Exception; end
     end
   end
 end

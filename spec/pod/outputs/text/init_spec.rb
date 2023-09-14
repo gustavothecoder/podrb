@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Pod::Outputs::Text::Init do
-  describe "#generate_msg" do
+  describe "#call" do
     context "when home is not found" do
       it "returns the correct message" do
         response = described_class.new(status: :failure, details: :home_not_found)

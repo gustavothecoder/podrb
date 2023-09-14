@@ -11,7 +11,6 @@ RSpec.describe Pod::Storage::SQL do
 
         result = db.execute <<-SQL
           create table podcasts (
-            id int primary key,
             name text not null,
             description text,
             feed text not null,
@@ -29,7 +28,6 @@ RSpec.describe Pod::Storage::SQL do
         db = described_class.new(db: TestHelpers::Path.db_dir)
         statement = <<-SQL
           create table (
-            id int primary key,
             name text not null,
             description text,
             feed text not null,
@@ -47,7 +45,6 @@ RSpec.describe Pod::Storage::SQL do
         db = described_class.new(db: TestHelpers::Path.db_dir)
         db.execute <<-SQL
           create table podcasts (
-            id int primary key,
             name text not null,
             description text,
             feed text not null,
@@ -76,7 +73,6 @@ RSpec.describe Pod::Storage::SQL do
         db = described_class.new(db: TestHelpers::Path.db_dir)
         db.execute <<-SQL
           create table podcasts (
-            id int primary key,
             name text not null,
             description text,
             feed text not null,

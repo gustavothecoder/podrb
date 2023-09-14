@@ -18,7 +18,6 @@ module Pod
 
         db.execute <<-SQL
           create table podcasts (
-            id int primary key,
             name text not null,
             description text,
             feed text not null,

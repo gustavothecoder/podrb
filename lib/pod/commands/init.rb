@@ -18,7 +18,7 @@ module Pod
           create table podcasts (
             name text not null,
             description text,
-            feed text not null,
+            feed text not null unique,
             website text
           );
         SQL

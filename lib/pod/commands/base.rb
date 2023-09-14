@@ -21,6 +21,18 @@ module Pod
       def build_failure_response(details:)
         {status: :failure, details: details}
       end
+
+      def home_dir
+        ENV["HOME"]
+      end
+
+      def pod_config_dir
+        home_dir + "/.config/pod"
+      end
+
+      def pod_db_dir
+        "#{pod_config_dir}/pod.db"
+      end
     end
   end
 end

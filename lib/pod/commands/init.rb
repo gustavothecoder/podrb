@@ -6,15 +6,13 @@ module Pod
   module Commands
     class Init < Base
       def call
-        home_dir = ENV["HOME"]
         return home_not_found if home_dir.nil?
 
-        pod_config_dir = home_dir + "/.config/pod"
         return already_initialized if Dir.exist?(pod_config_dir)
 
         FileUtils.mkdir_p(pod_config_dir)
 
-        db = Pod::Storage::SQL.new(db: "#{pod_config_dir}/pod.db")
+        db = Pod::Storage::SQL.new(db: pod_db_dir)
 
         db.execute <<-SQL
           create table podcasts (

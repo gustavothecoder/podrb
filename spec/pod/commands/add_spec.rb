@@ -20,6 +20,7 @@ RSpec.describe Pod::Commands::Add do
         expect(
           added_podcast
         ).to eq([
+          1,
           "Soft Skills Engineering",
           "It takes more than great code to be a great engineer. " \
           "Soft Skills Engineering is a weekly advice podcast for software developers " \

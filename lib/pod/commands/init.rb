@@ -15,10 +15,23 @@ module Pod
         db = Pod::Storage::SQL.new(db: pod_db_dir)
         db.execute <<-SQL
           create table podcasts (
+            id integer primary key,
             name text not null,
             description text,
             feed text not null unique,
             website text
+          );
+        SQL
+        db.execute <<-SQL
+          create table episodes (
+            id integer primary key,
+            title text not null,
+            description text,
+            release_date text,
+            duration text,
+            link text not null,
+            podcast_id integer not null,
+            foreign key(podcast_id) references podcasts(id)
           );
         SQL
 

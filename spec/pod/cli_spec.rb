@@ -37,4 +37,18 @@ RSpec.describe Pod::CLI do
       expect(result).to eq(expected_output.chomp)
     end
   end
+
+  describe "add command" do
+    it "adds a podcast to the pod database", :init_pod do
+      podcast_feed = "spec/fixtures/soft_skills_engineering.xml"
+      expected_output = <<~OUTPUT
+        Adding the podcast...
+        Podcast successfully added to the database!
+      OUTPUT
+
+      result = TestHelpers::CLI.run_cmd("pod add #{podcast_feed}")
+
+      expect(result).to eq(expected_output.chomp)
+    end
+  end
 end

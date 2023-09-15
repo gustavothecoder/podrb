@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes=http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Soft Skills Engineering</title>
+    <description>It takes more than great code to be a great engineer. Soft Skills Engineering is a weekly advice podcast for software developers about the non-technical stuff that goes into being a great software developer.</description>
+    <itunes:summary>It takes more than great code to be a great engineer. Soft Skills Engineering is a weekly advice podcast for software developers about the non-technical stuff that goes into being a great software developer.</itunes:summary>
+    <atom:link href="https://softskills.audio/feed.xml" rel="self" type="application/rss+xml" />
+
+    <language>en</language>
+    <link>https://softskills.audio/</link>
+    <managingEditor>Jamison Dance and Dave Smith</managingEditor>
+    <webMaster>Jamison Dance and Dave Smith</webMaster>
+    <copyright>2016 Jamison Dance and Dave Smith</copyright>
+    <lastBuildDate>2023-09-11 12:00:00 +0000</lastBuildDate>
+    <itunes:explicit>no</itunes:explicit>
+    <image>
+      <link>https://softskills.audio</link>
+      <url>https://download.softskills.audio/sse-cover-art.png</url>
+      <title>Soft Skills Engineering</title>
+    </image>
+
+    <itunes:new-feed-url>https://softskills.audio/feed.xml</itunes:new-feed-url>
+    <itunes:subtitle>It takes more than great code to be a great engineer. Soft Skills Engineering is a weekly advice podcast for software developers about the non-technical stuff that goes into being a great software developer.</itunes:subtitle>
+    <itunes:author>Jamison Dance and Dave Smith</itunes:author>
+    <itunes:keywords></itunes:keywords>
+    <itunes:owner>
+      <itunes:name>Jamison Dance and Dave Smith</itunes:name>
+      <itunes:email>soft-skills-engineering@googlegroups.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://download.softskills.audio/sse-cover-art.png"></itunes:image>
+    <itunes:category text="Technology" />
+    
+      <item>
+        <title>Episode 3: What to look for in a dev team</title>
+        <pubDate>Mon, 21 Mar 2016 19:00:00 +0000</pubDate>
+        <source url="https://softskills.audio">Soft Skills Engineering</source>
+        <guid isPermaLink="false">103dab3b-0da1-4f8e-883e-59552132c115</guid>
+        <itunes:author></itunes:author>
+        <itunes:duration>25:33</itunes:duration>
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/download.softskills.audio/sse-003.mp3?source=rss" length="30740779" type="audio/mpeg"/>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:subtitle></itunes:subtitle>
+        <description>&lt;p&gt;In episode 3, Jamison and Dave answer two questions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;What should I look for in a dev team?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I don’t get enough done at work. I work on a small team that has aggressive plans for developing its product, but I don’t feel like I get enough work done or move fast enough for the company.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <link>https://softskills.audio/2016/03/21/episode-3-what-to-look-for-in-a-dev-team/</link>
+      </item>
+    
+      <item>
+        <title>Episode 2: Influencing your team and dealing with anger</title>
+        <pubDate>Mon, 14 Mar 2016 19:00:00 +0000</pubDate>
+        <source url="https://softskills.audio">Soft Skills Engineering</source>
+        <guid isPermaLink="false">56d6dca2-d114-468a-953d-3f95b3048f59</guid>
+        <itunes:author></itunes:author>
+        <itunes:duration>25:33</itunes:duration>
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/download.softskills.audio/sse-002.mp3?source=rss" length="34683307" type="audio/mpeg"/>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:subtitle></itunes:subtitle>
+        <description>&lt;p&gt;In episode 2, Jamison and Dave answer two questions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;I work on a team, and I am not the team lead. I have lots of ideas for how to do things better. How can I influence my team without being the team lead, or without stepping on his or her shoes?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;How do you deal with anger at work, both on the receiving and giving end?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <link>https://softskills.audio/2016/03/14/episode-2-influencing-your-team-and-dealing-with-anger/</link>
+      </item>
+    
+      <item>
+        <title>Episode 1: Startup Opportunities and Switching Jobs</title>
+        <pubDate>Mon, 07 Mar 2016 19:00:00 +0000</pubDate>
+        <source url="https://softskills.audio">Soft Skills Engineering</source>
+        <guid isPermaLink="false">aea74a8a-e4b3-11e5-9016-001c4211514f</guid>
+        <itunes:author></itunes:author>
+        <itunes:duration>25:33</itunes:duration>
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/download.softskills.audio/sse-001.mp3?source=rss" length="186254" type="audio/mpeg"/>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:subtitle></itunes:subtitle>
+        <description>&lt;p&gt;Welcome to Soft Skills Engineering, where we answer your questions about non-technical topics in software engineering. Come get some wisdom, or at least some wise cracks.&lt;/p&gt;
+
+&lt;p&gt;In episode 1, Dave and Jamison answer two questions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’m a developer who gets approached from time to time to work on new software ideas. While I find working on something new and intriguing I have no experience with business. How do I determine how legitimate these opportunities are?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;At my current job, our codebase is a few years old and we use an “older” javascript framework. In my spare time I’ve really really enjoyed using one of the newer paradigms and technical stacks and I wish I had more opportunity to get experience with these technologies. I don’t see a rewrite or even a migration any time soon for our codebase at this company and have been considering taking a job where I’d have opportunity to work with these newer technologies. This despite enjoying my coworkers, and lacking any major complaints at this company. On a scale from 1 to 10 how crazy am I for considering a job change?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <link>https://softskills.audio/2016/03/07/episode-1-startup-opportunities-and-switching-jobs/</link>
+      </item>
+    
+  </channel>
+</rss>

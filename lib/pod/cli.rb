@@ -27,5 +27,14 @@ module Pod
 
       puts Pod::Outputs::Text::Init.new(result).call
     end
+
+    desc "add FEED", "Adds a podcast to the Pod database"
+    def add(feed)
+      puts "Adding the podcast..."
+
+      result = Pod::Commands::Add.call(feed)
+
+      puts Pod::Outputs::Text::Add.new(result).call
+    end
   end
 end

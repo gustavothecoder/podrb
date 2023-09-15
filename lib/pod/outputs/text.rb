@@ -2,6 +2,7 @@
 
 require_relative "base"
 require_relative "text/init"
+require_relative "text/add"
 
 module Pod
   module Outputs

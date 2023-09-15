@@ -23,6 +23,10 @@ RSpec.configure do |config|
 
     ENV["HOME"] = TMP_DIR
 
+    if test.metadata[:init_pod]
+      Pod::Commands::Init.call
+    end
+
     test.run
 
     config_dir = TMP_DIR + "/.config"

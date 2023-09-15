@@ -62,7 +62,7 @@ RSpec.describe Pod::Commands::Init do
 
         result = described_class.call
 
-        expect(result[:status]).to eq(:success)
+        expect(result[:status]).to eq(:failure)
         expect(result[:details]).to eq(:already_initialized)
         expect(File.new(TestHelpers::Path.db_dir).ctime).to eq(before_db_file_creation_date)
       end

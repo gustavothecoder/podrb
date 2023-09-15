@@ -35,7 +35,7 @@ module Pod
       end
 
       def already_initialized
-        build_success_response(details: :already_initialized)
+        build_failure_response(details: :already_initialized)
       end
 
       def success_response

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "../support/test_helpers"
+
 RSpec.describe Pod::FeedParser do
   describe "#call" do
     context "when the feed is successfully parsed" do
@@ -24,6 +26,16 @@ RSpec.describe Pod::FeedParser do
         )
         expect(result.podcast.feed).to eq("https://softskills.audio/feed.xml")
         expect(result.podcast.website).to eq("https://softskills.audio/")
+        episodes = result.episodes
+        3.times do |i|
+          parsed = episodes[i]
+          expected = TestHelpers::Data.soft_skills_engineering_episodes[i]
+          expect(parsed.title).to eq(expected[:title])
+          expect(parsed.release_date).to eq(expected[:release_date])
+          expect(parsed.duration).to eq(expected[:duration])
+          expect(parsed.description).to match(expected[:description])
+          expect(parsed.link).to eq(expected[:link])
+        end
       end
     end
 

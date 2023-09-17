@@ -7,7 +7,7 @@ RSpec.describe Pod::Commands::Add do
     @db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
   end
 
-  describe "call", :init_pod do
+  describe "#call", :init_pod do
     context "when feed is valid" do
       it "returns a success response and adds the podcast feed to the database" do
         podcast_feed = "spec/fixtures/soft_skills_engineering.xml"

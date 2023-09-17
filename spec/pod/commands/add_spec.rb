@@ -14,6 +14,7 @@ RSpec.describe Pod::Commands::Add do
 
         result = described_class.call(podcast_feed)
         added_podcast = @db.query("select * from podcasts").first
+        added_episodes = @db.query("select * from episodes")
 
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:successfully_added)
@@ -28,33 +29,69 @@ RSpec.describe Pod::Commands::Add do
           "https://softskills.audio/feed.xml",
           "https://softskills.audio/"
         ])
+        expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes
+        expect(
+          added_episodes
+        ).to eq([
+          [
+            1,
+            expected_episodes[0][:title],
+            expected_episodes[0][:description],
+            expected_episodes[0][:release_date],
+            expected_episodes[0][:duration],
+            expected_episodes[0][:link],
+            added_podcast[0] # podcast_id
+          ],
+          [
+            2,
+            expected_episodes[1][:title],
+            expected_episodes[1][:description],
+            expected_episodes[1][:release_date],
+            expected_episodes[1][:duration],
+            expected_episodes[1][:link],
+            added_podcast[0] # podcast_id
+          ],
+          [
+            3,
+            expected_episodes[2][:title],
+            expected_episodes[2][:description],
+            expected_episodes[2][:release_date],
+            expected_episodes[2][:duration],
+            expected_episodes[2][:link],
+            added_podcast[0] # podcast_id
+          ]
+        ])
       end
     end
 
     context "when the podcast already was added" do
-      it "returns a success response, but does not adds the podcast to the database" do
+      it "returns a success response, but does create DB records" do
         podcast_feed = "spec/fixtures/soft_skills_engineering.xml"
 
         described_class.call(podcast_feed)
         result = described_class.call(podcast_feed)
-        number_of_podcasts = @db.query("select * from podcasts").size
+        number_of_podcasts = @db.query("select count(id) from podcasts")[0][0]
+        number_of_episodes = @db.query("select count(id) from episodes")[0][0]
 
         expect(result[:status]).to eq(:failure)
         expect(result[:details]).to eq(:already_added)
         expect(number_of_podcasts).to eq(1)
+        expect(number_of_episodes).to eq(3)
       end
     end
 
-    context "when the feed is badly formatted" do
-      it "returns a failure response and does not adds the podcast to the database" do
-        podcast_feed = "spec/fixtures/badly_formatted_soft_skills_engineering.xml"
+    context "when the podcast data is badly formatted" do
+      it "returns a failure response and does not create DB records" do
+        podcast_feed = "spec/fixtures/podcast_data_badly_formatted.xml"
 
         result = described_class.call(podcast_feed)
-        number_of_podcasts = @db.query("select * from podcasts").size
+        number_of_podcasts = @db.query("select count(id) from podcasts")[0][0]
+        number_of_episodes = @db.query("select count(id) from episodes")[0][0]
 
         expect(result[:status]).to eq(:failure)
         expect(result[:details]).to eq(:badly_formatted)
         expect(number_of_podcasts).to be_zero
+        expect(number_of_episodes).to be_zero
       end
     end
   end

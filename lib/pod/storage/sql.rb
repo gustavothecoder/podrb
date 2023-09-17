@@ -35,6 +35,12 @@ module Pod
       rescue SQLite3::SQLException => exc
         raise Exceptions::WrongSyntax, exc.message
       end
+
+      # Reference
+      # https://github.com/sparklemotion/sqlite3-ruby/blob/v1.5.4/lib/sqlite3/database.rb#L632
+      def transaction(mode = :deferred, &block)
+        @conn.transaction(mode, &block)
+      end
     end
 
     module Exceptions

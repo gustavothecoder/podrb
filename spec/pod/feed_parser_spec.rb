@@ -43,14 +43,14 @@ RSpec.describe Pod::FeedParser do
       it "returns a feed object without data" do
         podcast_feed = %w[
           https://softskills.audio/feed.xml
-          spec/fixtures/badly_formatted_soft_skills_engineering.xml
+          spec/fixtures/podcast_data_badly_formatted.xml
         ].sample
         if podcast_feed.match?(/https/)
           allow(
             Net::HTTP
           ).to receive(:get)
             .with(URI("https://softskills.audio/feed.xml"))
-            .and_return(File.new("spec/fixtures/badly_formatted_soft_skills_engineering.xml").read)
+            .and_return(File.new("spec/fixtures/podcast_data_badly_formatted.xml").read)
         end
 
         result = described_class.call(podcast_feed)

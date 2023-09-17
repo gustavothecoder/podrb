@@ -18,16 +18,15 @@ RSpec.describe Pod::Commands::Add do
 
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:successfully_added)
+        expected_podcast = TestHelpers::Data.soft_skills_engineering
         expect(
           added_podcast
         ).to eq([
           1,
-          "Soft Skills Engineering",
-          "It takes more than great code to be a great engineer. " \
-          "Soft Skills Engineering is a weekly advice podcast for software developers " \
-          "about the non-technical stuff that goes into being a great software developer.",
-          "https://softskills.audio/feed.xml",
-          "https://softskills.audio/"
+          expected_podcast[:name],
+          expected_podcast[:description],
+          expected_podcast[:feed],
+          expected_podcast[:website]
         ])
         expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes
         expect(

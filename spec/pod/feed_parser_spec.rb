@@ -18,14 +18,11 @@ RSpec.describe Pod::FeedParser do
         result = described_class.call(podcast_feed)
 
         expect(result).to be_a(Pod::Entities::Feed)
-        expect(result.podcast.name).to eq("Soft Skills Engineering")
-        expect(result.podcast.description).to eq(
-          "It takes more than great code to be a great engineer. " \
-          "Soft Skills Engineering is a weekly advice podcast for software developers " \
-          "about the non-technical stuff that goes into being a great software developer."
-        )
-        expect(result.podcast.feed).to eq("https://softskills.audio/feed.xml")
-        expect(result.podcast.website).to eq("https://softskills.audio/")
+        expected_podcast = TestHelpers::Data.soft_skills_engineering
+        expect(result.podcast.name).to eq(expected_podcast[:name])
+        expect(result.podcast.description).to eq(expected_podcast[:description])
+        expect(result.podcast.feed).to eq(expected_podcast[:feed])
+        expect(result.podcast.website).to eq(expected_podcast[:website])
         episodes = result.episodes
         3.times do |i|
           parsed = episodes[i]

@@ -27,7 +27,20 @@ module TestHelpers
   end
 
   module Data
-    def self.soft_skills_engineering_episodes
+    extend self
+
+    def soft_skills_engineering
+      {
+        name: "Soft Skills Engineering",
+        description: "It takes more than great code to be a great engineer. " \
+                     "Soft Skills Engineering is a weekly advice podcast for software developers " \
+                     "about the non-technical stuff that goes into being a great software developer.",
+        feed: "https://softskills.audio/feed.xml",
+        website: "https://softskills.audio/"
+      }
+    end
+
+    def soft_skills_engineering_episodes
       [
         {
           title: "Episode 3: What to look for in a dev team",

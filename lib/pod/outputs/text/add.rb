@@ -18,6 +18,11 @@ module Pod
             <<~OUTPUT
               The podcast feed is badly formatted or unsupported.
             OUTPUT
+          when :missing_sync_url
+            <<~OUTPUT
+              This podcast feed doesn't provide a sync url. Please, use the --sync-url option to set this data manually.
+              Ex: `pod add FEED --sync-url=SYNC_URL`
+            OUTPUT
           end
         end
       end

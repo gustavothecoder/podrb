@@ -65,5 +65,40 @@ module TestHelpers
         }
       ]
     end
+
+    def fabio_akita
+      {
+        name: "Akitando",
+        description: "Conteúdo complementar ao canal de YouTube! \"Akitando\"",
+        feed: nil,
+        website: "https://podcasters.spotify.com/pod/show/akitando"
+      }
+    end
+
+    def fabio_akita_episodes
+      [
+        {
+          title: "Akitando #0002 - Akitando em Seoul - Parte 2",
+          release_date: "2020-02-20T00:31:00Z",
+          duration: "00:10:55",
+          description: "<p>Assista o vídeo completo <a href=\"https://youtu.be/OAz1b9TvlvA\">aqui</a>.</p>\n    <p>Assine o canal <a href=\"https://www.youtube.com/user/akitaonrails\">Akitando </a>no YouTube!</p>\n    <p><br></p>\n    <p>Originalmente publicado em 16/08/2018</p>\n    ",
+          link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando-0002---Akitando-em-Seoul---Parte-2-eaundj"
+        },
+        {
+          title: "Akitando #0001 - Akitando em Seoul - Parte 1",
+          release_date: "2020-02-20T00:26:23Z",
+          duration: "00:09:38",
+          description: "<p>Assista o vídeo completo <a href=\"https://youtu.be/QNLd8TZ_JQc\">aqui</a>.</p>\n    <p>Assine o canal <a href=\"https://www.youtube.com/user/akitaonrails\">Akitando</a> no YouTube!</p>\n    <p>Originalmente publicado em 10/08/2018</p>\n    ",
+          link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando-0001---Akitando-em-Seoul---Parte-1-eaunab"
+        },
+        {
+          title: "Akitando - Piloto",
+          release_date: "2020-02-20T00:01:49Z",
+          duration: "00:00:34",
+          description: "<p>A cada vídeo que eu publico no meu canal de YouTube!, o <a href=\"https://www.youtube.com/user/akitaonrails\">Akitando</a> muita gente me pede \"quando você vai subir os áudios no Spotify?\"</p>\n    <p>Atendendo a todos esses pedidos, vou tentar começar a subir os áudios aos poucos.</p>\n    <p>Mas lembrando que muitos áudios contém alguns errinhos que eu cometi e que eu corrijo diretamente no vídeo ou mesmo nas erratas nas descrições de cada vídeo no próprio YouTube! Além disso algumas partes do vídeo só fazem sentido se você ao mesmo tempo ver o diagrama ou ilustrações que eu mostro.</p>\n    <p>Eu não vou adaptar os áudios, vai ser simplesmente extrair dos vídeos e publicar aqui.&nbsp;</p>\n    <p>Vai ser um teste, quem sabe se aqui ficar popular eu passe a colocar conteúdos exclusivos também.</p>\n    ",
+          link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando---Piloto-eaumu2"
+        }
+      ]
+    end
   end
 end

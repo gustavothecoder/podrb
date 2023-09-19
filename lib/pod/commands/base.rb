@@ -33,6 +33,10 @@ module Pod
       def pod_db_dir
         "#{pod_config_dir}/pod.db"
       end
+
+      def parse_options(opts)
+        opts.select { |k, v| v != "" }
+      end
     end
   end
 end

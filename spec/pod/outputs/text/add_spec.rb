@@ -40,5 +40,19 @@ RSpec.describe Pod::Outputs::Text::Add do
         expect(msg).to eq(expected_output)
       end
     end
+
+    context "when the podcast feed hasn't a sync url" do
+      it "generates the correct message" do
+        response = described_class.new(status: :failure, details: :missing_sync_url)
+        expected_output = <<~OUTPUT
+          This podcast feed doesn't provide a sync url. Please, use the --sync-url option to set this data manually.
+          Ex: `pod add FEED --sync-url=SYNC_URL`
+        OUTPUT
+
+        msg = response.call
+
+        expect(msg).to eq(expected_output)
+      end
+    end
   end
 end

@@ -29,10 +29,11 @@ module Pod
     end
 
     desc "add FEED", "Adds a podcast to the Pod database"
+    method_option :sync_url, type: :string, default: "", desc: "Pod will use this URL to sync the podcast."
     def add(feed)
       puts "Adding the podcast..."
 
-      result = Pod::Commands::Add.call(feed)
+      result = Pod::Commands::Add.call(feed, options)
 
       puts Pod::Outputs::Text::Add.new(result).call
     end

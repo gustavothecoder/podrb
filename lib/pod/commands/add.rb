@@ -5,8 +5,9 @@ require_relative "../feed_parser"
 module Pod
   module Commands
     class Add < Base
-      def call(feed)
+      def call(feed, options = {})
         parsed_feed = Pod::FeedParser.call(feed)
+        parsed_options = parse_options(options)
 
         if missing_data?(parsed_feed)
           return build_failure_response(details: :badly_formatted)
@@ -15,14 +16,17 @@ module Pod
         db = Pod::Storage::SQL.new(db: pod_db_dir)
         db.transaction do
           podcast = parsed_feed.podcast
+          podcast_feed = parsed_options["sync_url"] || podcast.feed
+          return build_failure_response(details: :missing_sync_url) if podcast_feed.nil?
+
           db.execute <<-SQL
             insert into podcasts
             (name, description, feed, website)
             values (
-              "#{podcast.name}",
-              "#{podcast.description}",
-              "#{podcast.feed}",
-              "#{podcast.website}"
+              "#{escape_double_quotes(podcast.name)}",
+              "#{escape_double_quotes(podcast.description)}",
+              "#{escape_double_quotes(podcast_feed)}",
+              "#{escape_double_quotes(podcast.website)}"
             );
           SQL
 
@@ -32,12 +36,12 @@ module Pod
               insert into episodes
               (title, release_date, podcast_id, duration, description, link)
               values (
-                "#{e.title}",
-                "#{e.release_date}",
+                "#{escape_double_quotes(e.title)}",
+                "#{escape_double_quotes(e.release_date)}",
                 #{inserted_podcast_id},
-                "#{e.duration}",
-                "#{e.description}",
-                "#{e.link}"
+                "#{escape_double_quotes(e.duration)}",
+                "#{escape_double_quotes(e.description)}",
+                "#{escape_double_quotes(e.link)}"
               );
             SQL
           end
@@ -52,6 +56,10 @@ module Pod
 
       def missing_data?(feed)
         feed.podcast.nil? || feed.episodes.nil?
+      end
+
+      def escape_double_quotes(str)
+        str.gsub("\"", "\"\"")
       end
     end
   end

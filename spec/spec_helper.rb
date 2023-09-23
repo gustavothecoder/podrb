@@ -27,6 +27,14 @@ RSpec.configure do |config|
       Pod::Commands::Init.call
     end
 
+    if test.metadata[:populate_db]
+      Pod::Commands::Add.call("./spec/fixtures/soft_skills_engineering.xml")
+      Pod::Commands::Add.call(
+        "./spec/fixtures/fabio_akita.xml",
+        {"sync_url" => "https://www.fabio.com/feed.xml"}
+      )
+    end
+
     test.run
 
     config_dir = TMP_DIR + "/.config"

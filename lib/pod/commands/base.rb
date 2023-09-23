@@ -14,12 +14,12 @@ module Pod
 
       private
 
-      def build_success_response(details:)
-        {status: :success, details: details}
+      def build_success_response(details:, data: [])
+        {status: :success, details: details, data: data}
       end
 
-      def build_failure_response(details:)
-        {status: :failure, details: details}
+      def build_failure_response(details:, data: [])
+        {status: :failure, details: details, data: data}
       end
 
       def home_dir

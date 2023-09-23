@@ -38,8 +38,8 @@ RSpec.describe Pod::CLI do
     end
   end
 
-  describe "add command" do
-    it "adds a podcast to the pod database", :init_pod do
+  describe "add command", :init_pod do
+    it "adds a podcast to the pod database" do
       podcast_feed = "spec/fixtures/soft_skills_engineering.xml"
       expected_output = <<~OUTPUT
         Adding the podcast...
@@ -47,6 +47,54 @@ RSpec.describe Pod::CLI do
       OUTPUT
 
       result = TestHelpers::CLI.run_cmd("pod add #{podcast_feed}")
+
+      expect(result).to eq(expected_output.chomp)
+    end
+
+    context "when the --sync-url option is used" do
+      it "adds a podcast to the pod database" do
+        podcast_feed = "spec/fixtures/fabio_akita.xml"
+        sync_url = "https://www.fabio.com/feed.xml"
+        expected_output = <<~OUTPUT
+          Adding the podcast...
+          Podcast successfully added to the database!
+        OUTPUT
+
+        result = TestHelpers::CLI.run_cmd("pod add #{podcast_feed} --sync-url=#{sync_url}")
+
+        expect(result).to eq(expected_output.chomp)
+      end
+    end
+  end
+
+  describe "table command", :init_pod, :populate_db do
+    it "returns the records of a table" do
+      expected_output = <<~OUTPUT
+        +-------------------+-------------------+-------------------+------------------+
+        |        name       |    description    |        feed       |      website     |
+        +-------------------+-------------------+-------------------+------------------+
+        | Soft Skills Engin | It takes more tha | https://softskill | https://softskil |
+        | eering            | n great code to b | s.audio/feed.xml  | ls.audio/        |
+        |                   | e a great enginee |                   |                  |
+        |                   | r. Soft Skills En |                   |                  |
+        |                   | gineering is a we |                   |                  |
+        |                   | ekly advice podca |                   |                  |
+        |                   | st for software d |                   |                  |
+        |                   | evelopers about t |                   |                  |
+        |                   | he non-technical  |                   |                  |
+        |                   | stuff that goes i |                   |                  |
+        |                   | nto being a great |                   |                  |
+        |                   |  software develop |                   |                  |
+        |                   | er.               |                   |                  |
+        +-------------------+-------------------+-------------------+------------------+
+        | Akitando          | Conteúdo compleme | https://www.fabio | https://podcaste |
+        |                   | ntar ao canal de  | .com/feed.xml     | rs.spotify.com/p |
+        |                   | YouTube! "Akitand |                   | od/show/akitando |
+        |                   | o"                |                   |                  |
+        +-------------------+-------------------+-------------------+------------------+
+      OUTPUT
+
+      result = TestHelpers::CLI.run_cmd("pod table podcasts")
 
       expect(result).to eq(expected_output.chomp)
     end

@@ -70,7 +70,7 @@ module TestHelpers
       {
         name: "Akitando",
         description: "Conteúdo complementar ao canal de YouTube! \"Akitando\"",
-        feed: nil,
+        feed: "https://www.fabio.com/feed.xml",
         website: "https://podcasters.spotify.com/pod/show/akitando"
       }
     end

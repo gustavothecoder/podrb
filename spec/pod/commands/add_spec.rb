@@ -82,7 +82,7 @@ RSpec.describe Pod::Commands::Add do
           1,
           expected_podcast[:name],
           expected_podcast[:description],
-          options["sync_url"],
+          expected_podcast[:feed],
           expected_podcast[:website]
         ])
         expected_episodes = TestHelpers::Data.fabio_akita_episodes

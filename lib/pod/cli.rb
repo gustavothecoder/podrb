@@ -37,5 +37,12 @@ module Pod
 
       puts Pod::Outputs::Text::Add.new(result).call
     end
+
+    desc "table NAME", "List NAME records"
+    def table(name)
+      result = Pod::Commands::Table.call(name)
+
+      puts Pod::Outputs::Text::Table.new(result).call
+    end
   end
 end

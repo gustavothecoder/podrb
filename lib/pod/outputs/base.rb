@@ -5,7 +5,11 @@ require "tabulo"
 module Pod
   module Outputs
     class Base
-      def initialize(context = {})
+      def self.call(context = {})
+        new(context).call
+      end
+
+      def initialize(context)
         @context = context
       end
 

@@ -25,7 +25,7 @@ module Pod
 
       result = Pod::Commands::Init.call
 
-      puts Pod::Outputs::Text::Init.new(result).call
+      puts Pod::Outputs::Text::Init.call(result)
     end
 
     desc "add FEED", "Adds a podcast to the Pod database"
@@ -35,14 +35,14 @@ module Pod
 
       result = Pod::Commands::Add.call(feed, options)
 
-      puts Pod::Outputs::Text::Add.new(result).call
+      puts Pod::Outputs::Text::Add.call(result)
     end
 
     desc "table NAME", "List NAME records"
     def table(name)
       result = Pod::Commands::Table.call(name)
 
-      puts Pod::Outputs::Text::Table.new(result).call
+      puts Pod::Outputs::Text::Table.call(result)
     end
   end
 end

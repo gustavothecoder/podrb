@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Table do
+RSpec.describe Pod::Outputs::Text::Podcasts do
   describe "#call" do
     context "when there are records to show" do
       it "generates the correct output" do
@@ -36,24 +36,7 @@ RSpec.describe Pod::Outputs::Text::Table do
           data: []
         )
         expected_output = <<~OUTPUT
-          This table has no records.
-        OUTPUT
-
-        msg = response.call
-
-        expect(msg).to eq(expected_output)
-      end
-    end
-
-    context "when the table was not found" do
-      it "generates the correct output" do
-        response = described_class.new(
-          status: :failure,
-          details: :invalid_table,
-          data: []
-        )
-        expected_output = <<~OUTPUT
-          This table is invalid.
+          No podcasts yet.
         OUTPUT
 
         msg = response.call

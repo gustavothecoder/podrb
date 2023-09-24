@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Table < ::Pod::Outputs::Base
+      class Podcasts < ::Pod::Outputs::Base
         def call
           case @context[:details]
           when :records_found
@@ -16,11 +16,7 @@ module Pod
             OUTPUT
           when :empty_table
             <<~OUTPUT
-              This table has no records.
-            OUTPUT
-          when :invalid_table
-            <<~OUTPUT
-              This table is invalid.
+              No podcasts yet.
             OUTPUT
           end
         end

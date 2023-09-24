@@ -67,8 +67,8 @@ RSpec.describe Pod::CLI do
     end
   end
 
-  describe "table command", :init_pod, :populate_db do
-    it "returns the records of a table" do
+  describe "podcasts command", :init_pod, :populate_db do
+    it "returns the podcast records" do
       expected_output = <<~OUTPUT
         +-------------------+-------------------+-------------------+------------------+
         |        name       |    description    |        feed       |      website     |
@@ -94,7 +94,7 @@ RSpec.describe Pod::CLI do
         +-------------------+-------------------+-------------------+------------------+
       OUTPUT
 
-      result = TestHelpers::CLI.run_cmd("pod table podcasts")
+      result = TestHelpers::CLI.run_cmd("pod podcasts")
 
       expect(result).to eq(expected_output.chomp)
     end

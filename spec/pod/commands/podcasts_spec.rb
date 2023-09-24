@@ -2,9 +2,9 @@
 
 require_relative "../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Table do
+RSpec.describe Pod::Commands::Podcasts do
   describe  "#call", :init_pod do
-    context "when the table exists and has records", :populate_db do
+    context "when there are podcasts", :populate_db do
       it "returns a success response with the table records" do
         result = described_class.call("podcasts")
 
@@ -25,22 +25,12 @@ RSpec.describe Pod::Commands::Table do
       end
     end
 
-    context "when the table exists, but is empty" do
+    context "when there are no podcasts" do
       it "returns a success response without data" do
         result = described_class.call("podcasts")
 
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:empty_table)
-        expect(result[:data]).to eq([])
-      end
-    end
-
-    context "when the table doesn't exists" do
-      it "returns a failure response without data" do
-        result = described_class.call("podcasts_table")
-
-        expect(result[:status]).to eq(:failure)
-        expect(result[:details]).to eq(:invalid_table)
         expect(result[:data]).to eq([])
       end
     end

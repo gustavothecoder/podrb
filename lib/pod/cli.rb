@@ -38,11 +38,11 @@ module Pod
       puts Pod::Outputs::Text::Add.call(result)
     end
 
-    desc "table NAME", "List NAME records"
-    def table(name)
-      result = Pod::Commands::Table.call(name)
+    desc "podcasts", "List the podcast records"
+    def podcasts
+      result = Pod::Commands::Podcasts.call
 
-      puts Pod::Outputs::Text::Table.call(result)
+      puts Pod::Outputs::Text::Podcasts.call(result)
     end
   end
 end

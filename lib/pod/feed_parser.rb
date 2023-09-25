@@ -16,19 +16,19 @@ module Pod
       parsed_content = Feedjira.parse(content)
 
       podcast = Pod::Entities::Podcast.new(
-        parsed_content.title,
-        parsed_content.description,
-        parsed_content.itunes_new_feed_url,
-        parsed_content.url
+        name: parsed_content.title,
+        description: parsed_content.description,
+        feed: parsed_content.itunes_new_feed_url,
+        website: parsed_content.url
       )
 
       episodes = parsed_content.entries.map do |e|
         Pod::Entities::Episode.new(
-          e.title,
-          e.published.iso8601,
-          e.itunes_duration,
-          e.summary,
-          e.url
+          title: e.title,
+          release_date: e.published.iso8601,
+          duration: e.itunes_duration,
+          description: e.summary,
+          link: e.url
         )
       end
 

@@ -3,7 +3,7 @@
 module Pod
   module Entities
     class Podcast
-      def initialize(name, description, feed, website)
+      def initialize(name: nil, description: nil, feed: nil, website: nil)
         @name = name
         @description = description
         @feed = feed

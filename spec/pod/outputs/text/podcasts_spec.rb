@@ -8,8 +8,18 @@ RSpec.describe Pod::Outputs::Text::Podcasts do
           status: :success,
           details: :records_found,
           data: [
-            Pod::Entities::Podcast.new("pod1", "pod1", "https://pod1.feed", "https://pod1.com"),
-            Pod::Entities::Podcast.new("pod2", "pod2", "https://pod2.feed", "https://pod2.com")
+            Pod::Entities::Podcast.new(
+              name: "pod1",
+              description: "pod1",
+              feed: "https://pod1.feed",
+              website: "https://pod1.com"
+            ),
+            Pod::Entities::Podcast.new(
+              name: "pod2",
+              description: "pod2",
+              feed: "https://pod2.feed",
+              website: "https://pod2.com"
+            )
           ]
         )
         expected_output = <<~OUTPUT

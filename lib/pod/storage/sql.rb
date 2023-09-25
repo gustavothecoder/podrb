@@ -24,13 +24,19 @@ module Pod
         raise Exceptions::ConstraintViolation, exc.message
       end
 
-      def query(sql)
-        result = @conn.query(sql)
-        parsed_result = result.to_a
-        # From the SQLite3 doc: You must be sure to call close on the ResultSet instance that is
-        # returned, or you could have problems with locks on the table. If called with a block,
-        # close will be invoked implicitly when the block terminates.
-        result.close
+      def query(sql, entity = nil)
+        parsed_result = []
+
+        @conn.query(sql) do |result|
+          result.each_hash do |row|
+            if entity.nil?
+              parsed_result << row
+            else
+              parsed_result << entity.new(row.transform_keys(&:to_sym))
+            end
+          end
+        end
+
         parsed_result
       rescue SQLite3::SQLException => exc
         raise Exceptions::WrongSyntax, exc.message

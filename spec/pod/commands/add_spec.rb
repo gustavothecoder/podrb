@@ -22,44 +22,38 @@ RSpec.describe Pod::Commands::Add do
         expected_podcast = TestHelpers::Data.soft_skills_engineering
         expect(
           added_podcast
-        ).to eq([
-          1,
-          expected_podcast[:name],
-          expected_podcast[:description],
-          expected_podcast[:feed],
-          expected_podcast[:website]
-        ])
+        ).to eq({
+          "id" => 1,
+          "name" => expected_podcast[:name],
+          "description" => expected_podcast[:description],
+          "feed" => expected_podcast[:feed],
+          "website" => expected_podcast[:website]
+        })
         expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes
         expect(
           added_episodes
         ).to eq([
-          [
-            1,
-            expected_episodes[0][:title],
-            expected_episodes[0][:description],
-            expected_episodes[0][:release_date],
-            expected_episodes[0][:duration],
-            expected_episodes[0][:link],
-            added_podcast[0] # podcast_id
-          ],
-          [
-            2,
-            expected_episodes[1][:title],
-            expected_episodes[1][:description],
-            expected_episodes[1][:release_date],
-            expected_episodes[1][:duration],
-            expected_episodes[1][:link],
-            added_podcast[0] # podcast_id
-          ],
-          [
-            3,
-            expected_episodes[2][:title],
-            expected_episodes[2][:description],
-            expected_episodes[2][:release_date],
-            expected_episodes[2][:duration],
-            expected_episodes[2][:link],
-            added_podcast[0] # podcast_id
-          ]
+          {"id" => 1,
+           "title" => expected_episodes[0][:title],
+           "description" => expected_episodes[0][:description],
+           "release_date" => expected_episodes[0][:release_date],
+           "duration" => expected_episodes[0][:duration],
+           "link" => expected_episodes[0][:link],
+           "podcast_id" => added_podcast[0]},
+          {"id" => 2,
+           "title" => expected_episodes[1][:title],
+           "description" => expected_episodes[1][:description],
+           "release_date" => expected_episodes[1][:release_date],
+           "duration" => expected_episodes[1][:duration],
+           "link" => expected_episodes[1][:link],
+           "podcast_id" => added_podcast[0]},
+          {"id" => 3,
+           "title" => expected_episodes[2][:title],
+           "description" => expected_episodes[2][:description],
+           "release_date" => expected_episodes[2][:release_date],
+           "duration" => expected_episodes[2][:duration],
+           "link" => expected_episodes[2][:link],
+           "podcast_id" => added_podcast[0]}
         ])
       end
     end
@@ -78,44 +72,38 @@ RSpec.describe Pod::Commands::Add do
         expected_podcast = TestHelpers::Data.fabio_akita
         expect(
           added_podcast
-        ).to eq([
-          1,
-          expected_podcast[:name],
-          expected_podcast[:description],
-          expected_podcast[:feed],
-          expected_podcast[:website]
-        ])
+        ).to eq({
+          "id" => 1,
+          "name" => expected_podcast[:name],
+          "description" => expected_podcast[:description],
+          "feed" => expected_podcast[:feed],
+          "website" => expected_podcast[:website]
+        })
         expected_episodes = TestHelpers::Data.fabio_akita_episodes
         expect(
           added_episodes
         ).to eq([
-          [
-            1,
-            expected_episodes[0][:title],
-            expected_episodes[0][:description],
-            expected_episodes[0][:release_date],
-            expected_episodes[0][:duration],
-            expected_episodes[0][:link],
-            added_podcast[0] # podcast_id
-          ],
-          [
-            2,
-            expected_episodes[1][:title],
-            expected_episodes[1][:description],
-            expected_episodes[1][:release_date],
-            expected_episodes[1][:duration],
-            expected_episodes[1][:link],
-            added_podcast[0] # podcast_id
-          ],
-          [
-            3,
-            expected_episodes[2][:title],
-            expected_episodes[2][:description],
-            expected_episodes[2][:release_date],
-            expected_episodes[2][:duration],
-            expected_episodes[2][:link],
-            added_podcast[0] # podcast_id
-          ]
+          {"id" => 1,
+           "title" => expected_episodes[0][:title],
+           "description" => expected_episodes[0][:description],
+           "release_date" => expected_episodes[0][:release_date],
+           "duration" => expected_episodes[0][:duration],
+           "link" => expected_episodes[0][:link],
+           "podcast_id" => added_podcast[0]},
+          {"id" => 2,
+           "title" => expected_episodes[1][:title],
+           "description" => expected_episodes[1][:description],
+           "release_date" => expected_episodes[1][:release_date],
+           "duration" => expected_episodes[1][:duration],
+           "link" => expected_episodes[1][:link],
+           "podcast_id" => added_podcast[0]},
+          {"id" => 3,
+           "title" => expected_episodes[2][:title],
+           "description" => expected_episodes[2][:description],
+           "release_date" => expected_episodes[2][:release_date],
+           "duration" => expected_episodes[2][:duration],
+           "link" => expected_episodes[2][:link],
+           "podcast_id" => added_podcast[0]}
         ])
       end
     end

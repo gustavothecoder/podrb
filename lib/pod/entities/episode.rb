@@ -3,7 +3,7 @@
 module Pod
   module Entities
     class Episode
-      def initialize(title, release_date, duration, description, link)
+      def initialize(title: nil, release_date: nil, duration: nil, description: nil, link: nil)
         @title = title
         @release_date = release_date
         @duration = duration

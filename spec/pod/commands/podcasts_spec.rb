@@ -6,7 +6,7 @@ RSpec.describe Pod::Commands::Podcasts do
   describe  "#call", :init_pod do
     context "when there are podcasts", :populate_db do
       it "returns a success response with the table records" do
-        result = described_class.call("podcasts")
+        result = described_class.call
 
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:records_found)
@@ -27,7 +27,7 @@ RSpec.describe Pod::Commands::Podcasts do
 
     context "when there are no podcasts" do
       it "returns a success response without data" do
-        result = described_class.call("podcasts")
+        result = described_class.call
 
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:empty_table)

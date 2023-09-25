@@ -3,7 +3,7 @@
 module Pod
   module Commands
     class Podcasts < Base
-      ALL_COLUMNS = %w[name description feed website].freeze
+      ALL_COLUMNS = %w[id name description feed website].freeze
       private_constant :ALL_COLUMNS
 
       def call(options = {})

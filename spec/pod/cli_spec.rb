@@ -70,28 +70,28 @@ RSpec.describe Pod::CLI do
   describe "podcasts command", :init_pod, :populate_db do
     it "returns the podcast records" do
       expected_output = <<~OUTPUT
-        +-------------------+-------------------+-------------------+------------------+
-        |        name       |    description    |        feed       |      website     |
-        +-------------------+-------------------+-------------------+------------------+
-        | Soft Skills Engin | It takes more tha | https://softskill | https://softskil |
-        | eering            | n great code to b | s.audio/feed.xml  | ls.audio/        |
-        |                   | e a great enginee |                   |                  |
-        |                   | r. Soft Skills En |                   |                  |
-        |                   | gineering is a we |                   |                  |
-        |                   | ekly advice podca |                   |                  |
-        |                   | st for software d |                   |                  |
-        |                   | evelopers about t |                   |                  |
-        |                   | he non-technical  |                   |                  |
-        |                   | stuff that goes i |                   |                  |
-        |                   | nto being a great |                   |                  |
-        |                   |  software develop |                   |                  |
-        |                   | er.               |                   |                  |
-        +-------------------+-------------------+-------------------+------------------+
-        | Akitando          | Conteúdo compleme | https://www.fabio | https://podcaste |
-        |                   | ntar ao canal de  | .com/feed.xml     | rs.spotify.com/p |
-        |                   | YouTube! "Akitand |                   | od/show/akitando |
-        |                   | o"                |                   |                  |
-        +-------------------+-------------------+-------------------+------------------+
+        +----+------------------+------------------+-----------------+-----------------+
+        | id |       name       |    description   |       feed      |     website     |
+        +----+------------------+------------------+-----------------+-----------------+
+        |  1 | Soft Skills Engi | It takes more th | https://softski | https://softski |
+        |    | neering          | an great code to | lls.audio/feed. | lls.audio/      |
+        |    |                  |  be a great engi | xml             |                 |
+        |    |                  | neer. Soft Skill |                 |                 |
+        |    |                  | s Engineering is |                 |                 |
+        |    |                  |  a weekly advice |                 |                 |
+        |    |                  |  podcast for sof |                 |                 |
+        |    |                  | tware developers |                 |                 |
+        |    |                  |  about the non-t |                 |                 |
+        |    |                  | echnical stuff t |                 |                 |
+        |    |                  | hat goes into be |                 |                 |
+        |    |                  | ing a great soft |                 |                 |
+        |    |                  | ware developer.  |                 |                 |
+        +----+------------------+------------------+-----------------+-----------------+
+        |  2 | Akitando         | Conteúdo complem | https://www.fab | https://podcast |
+        |    |                  | entar ao canal d | io.com/feed.xml | ers.spotify.com |
+        |    |                  | e YouTube! "Akit |                 | /pod/show/akita |
+        |    |                  | ando"            |                 | ndo             |
+        +----+------------------+------------------+-----------------+-----------------+
       OUTPUT
 
       result = TestHelpers::CLI.run_cmd("pod podcasts")

@@ -14,15 +14,17 @@ RSpec.describe Pod::Commands::Podcasts do
         expected_podcast2 = TestHelpers::Data.fabio_akita
         result_podcast1 = result[:metadata][:records][0]
         result_podcast2 = result[:metadata][:records][1]
+        expect(result_podcast1.id).to eq(1)
         expect(result_podcast1.name).to eq(expected_podcast1[:name])
         expect(result_podcast1.description).to eq(expected_podcast1[:description])
         expect(result_podcast1.feed).to eq(expected_podcast1[:feed])
         expect(result_podcast1.website).to eq(expected_podcast1[:website])
+        expect(result_podcast2.id).to eq(2)
         expect(result_podcast2.name).to eq(expected_podcast2[:name])
         expect(result_podcast2.description).to eq(expected_podcast2[:description])
         expect(result_podcast2.feed).to eq(expected_podcast2[:feed])
         expect(result_podcast2.website).to eq(expected_podcast2[:website])
-        expect(result[:metadata][:columns]).to eq(%w[name description feed website])
+        expect(result[:metadata][:columns]).to eq(%w[id name description feed website])
       end
     end
 

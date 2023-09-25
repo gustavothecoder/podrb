@@ -45,5 +45,13 @@ module Pod
 
       puts Pod::Outputs::Text::Podcasts.call(result)
     end
+
+    desc "episodes PODCAST_ID", "List the podcast episodes"
+    method_option :fields, type: :array, default: [], desc: "Select the fields that will be displayed."
+    def episodes(podcast_id)
+      result = Pod::Commands::Episodes.call(podcast_id, options)
+
+      puts Pod::Outputs::Text::Episodes.call(result)
+    end
   end
 end

@@ -50,6 +50,12 @@ RSpec.describe Pod::Commands::Podcasts do
       end
     end
 
+    # TODO
+    # context "when fields parameter is used, but the value is invalid" do
+    #   it "returns a failure response without data" do
+    #   end
+    # end
+
     context "when there are no podcasts" do
       it "returns a success response without data" do
         result = described_class.call

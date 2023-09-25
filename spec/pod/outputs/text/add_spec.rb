@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Pod::Outputs::Text::Add do
-  describe "#generate_msg" do
+  describe "#call" do
     context "when the podcast is successfully added" do
       it "generates the correct message" do
         response = described_class.new(status: :success, details: :successfully_added)

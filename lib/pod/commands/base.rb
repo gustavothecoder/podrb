@@ -19,7 +19,7 @@ module Pod
       end
 
       def build_failure_response(details:, metadata: nil)
-        {status: :failure, details: details, data: metadata}
+        {status: :failure, details: details, metadata: metadata}
       end
 
       def home_dir

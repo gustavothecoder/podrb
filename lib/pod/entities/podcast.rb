@@ -10,12 +10,6 @@ module Pod
         @website = website
       end
 
-      def self.batch_initialize(batch)
-        batch.map do |p|
-          new(p[0], p[1], p[2], p[3])
-        end
-      end
-
       attr_reader :name, :description, :feed, :website
     end
   end

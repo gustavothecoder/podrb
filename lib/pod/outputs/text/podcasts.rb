@@ -8,8 +8,8 @@ module Pod
           case @context[:details]
           when :records_found
             text_table = generate_text_table(
-              data: @context[:data],
-              columns: %i[name description feed website]
+              data: @context[:metadata][:records],
+              columns: @context[:metadata][:columns]
             )
             <<~OUTPUT
               #{text_table}

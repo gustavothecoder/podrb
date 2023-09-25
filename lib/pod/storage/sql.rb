@@ -29,10 +29,10 @@ module Pod
 
         @conn.query(sql) do |result|
           result.each_hash do |row|
-            if entity.nil?
-              parsed_result << row
+            parsed_result << if entity.nil?
+              row
             else
-              parsed_result << entity.new(row.transform_keys(&:to_sym))
+              entity.new(row.transform_keys(&:to_sym))
             end
           end
         end

@@ -98,5 +98,23 @@ RSpec.describe Pod::CLI do
 
       expect(result).to eq(expected_output.chomp)
     end
+
+    context "when the fields parameter is used" do
+      it "returns the podcast records, but only the selected fields" do
+        expected_output = <<~OUTPUT
+          +-------------------------+--------------------------------------------------+
+          |           name          |                      website                     |
+          +-------------------------+--------------------------------------------------+
+          | Soft Skills Engineering | https://softskills.audio/                        |
+          +-------------------------+--------------------------------------------------+
+          | Akitando                | https://podcasters.spotify.com/pod/show/akitando |
+          +-------------------------+--------------------------------------------------+
+        OUTPUT
+
+        result = TestHelpers::CLI.run_cmd("pod podcasts --fields=name website")
+
+        expect(result).to eq(expected_output.chomp)
+      end
+    end
   end
 end

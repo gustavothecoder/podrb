@@ -14,12 +14,12 @@ module Pod
 
       private
 
-      def build_success_response(details:, data: [])
-        {status: :success, details: details, data: data}
+      def build_success_response(details:, metadata: nil)
+        {status: :success, details: details, metadata: metadata}
       end
 
-      def build_failure_response(details:, data: [])
-        {status: :failure, details: details, data: data}
+      def build_failure_response(details:, metadata: nil)
+        {status: :failure, details: details, data: metadata}
       end
 
       def home_dir
@@ -35,7 +35,7 @@ module Pod
       end
 
       def parse_options(opts)
-        opts.select { |k, v| v != "" }
+        opts.select { |k, v| v != "" && v != [] }
       end
     end
   end

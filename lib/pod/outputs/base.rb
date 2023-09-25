@@ -16,7 +16,7 @@ module Pod
       private
 
       def generate_text_table(data:, columns:)
-        Tabulo::Table.new(data, *columns, row_divider_frequency: 1).pack
+        Tabulo::Table.new(data, *columns.map(&:to_sym), row_divider_frequency: 1).pack
       end
     end
   end

@@ -12,7 +12,7 @@ module Pod
         db = Pod::Storage::SQL.new(db: pod_db_dir)
         records = db.query(
           "select #{columns.join(", ")} from episodes where podcast_id = #{podcast_id}",
-          Pod::Entities::Episode
+          entity: Pod::Entities::Episode
         )
         build_success_response(
           details: records.empty? ? :not_found : :records_found,

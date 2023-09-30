@@ -29,6 +29,7 @@ module Pod
       puts Pod::Outputs::Text::Init.call(result)
     end
 
+    # TODO: reverse episodes order before creating records
     desc "add FEED", "Adds a podcast to the Pod database"
     method_option :sync_url, type: :string, default: "", desc: "Pod will use this URL to sync the podcast."
     def add(feed)
@@ -47,6 +48,7 @@ module Pod
       puts Pod::Outputs::Text::Podcasts.call(result)
     end
 
+    # TODO: add `order` option
     desc "episodes PODCAST_ID", "List the podcast episodes"
     method_option :fields, type: :array, default: [], desc: "Select the fields that will be displayed."
     def episodes(podcast_id)
@@ -65,5 +67,14 @@ module Pod
 
       puts Pod::Outputs::Text::Open.call(result)
     end
+
+    # TODO
+    # desc "archive EPISODE_ID", "Archive the episode."
+
+    # TODO
+    # desc "sync PODCAST_ID", "Synce the podcast."
+
+    # TODO
+    # desc "delete PODCAST_ID", "Delete the podcast from pod's database."
   end
 end

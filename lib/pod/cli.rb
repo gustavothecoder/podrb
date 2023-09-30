@@ -29,7 +29,6 @@ module Pod
       puts Pod::Outputs::Text::Init.call(result)
     end
 
-    # TODO: reverse episodes order before creating records
     desc "add FEED", "Adds a podcast to the Pod database"
     method_option :sync_url, type: :string, default: "", desc: "Pod will use this URL to sync the podcast."
     def add(feed)
@@ -60,6 +59,8 @@ module Pod
     desc "open EPISODE_ID", "Open a episode in the browser"
     # TODO
     # method_option :archive, type: :boolean, default: false, desc: "Archive the episode."
+    # TODO
+    # method_option :browser, type: :string, default: "firefox", desc: "Choose the browser."
     def open(episode_id)
       result = Pod::Commands::Open.call(episode_id)
 

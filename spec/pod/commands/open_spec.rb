@@ -11,7 +11,7 @@ RSpec.describe Pod::Commands::Open do
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:can_open)
         expect(result[:metadata][:cmd]).to eq(
-          "/usr/bin/firefox https://softskills.audio/2016/03/21/episode-3-what-to-look-for-in-a-dev-team/"
+          "/usr/bin/firefox #{TestHelpers::Data.soft_skills_engineering_episodes[0][:link]}"
         )
       end
     end

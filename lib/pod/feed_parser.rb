@@ -31,7 +31,8 @@ module Pod
         )
       end
 
-      Pod::Entities::Feed.new(podcast, episodes)
+      # The #reverse is necessary to put the oldest episodes on the top of the feed.
+      Pod::Entities::Feed.new(podcast, episodes.reverse)
     rescue NoMethodError
       Pod::Entities::Feed.new(nil, nil)
     end

@@ -124,11 +124,11 @@ RSpec.describe Pod::CLI do
         +----+--------------------+--------------------+----------+--------------------+
         | id |        title       |    release_date    | duration |        link        |
         +----+--------------------+--------------------+----------+--------------------+
-        |  1 | Episode 3: What to | 2016-03-21T19:00:0 | 25:33    | https://softskills |
-        |    |  look for in a dev | 0Z                 |          | .audio/2016/03/21/ |
-        |    |  team              |                    |          | episode-3-what-to- |
-        |    |                    |                    |          | look-for-in-a-dev- |
-        |    |                    |                    |          | team/              |
+        |  1 | Episode 1: Startup | 2016-03-07T19:00:0 | 25:33    | https://softskills |
+        |    |  Opportunities and | 0Z                 |          | .audio/2016/03/07/ |
+        |    |  Switching Jobs    |                    |          | episode-1-startup- |
+        |    |                    |                    |          | opportunities-and- |
+        |    |                    |                    |          | switching-jobs/    |
         +----+--------------------+--------------------+----------+--------------------+
         |  2 | Episode 2: Influen | 2016-03-14T19:00:0 | 25:33    | https://softskills |
         |    | cing your team and | 0Z                 |          | .audio/2016/03/14/ |
@@ -137,11 +137,11 @@ RSpec.describe Pod::CLI do
         |    |                    |                    |          | dealing-with-anger |
         |    |                    |                    |          | /                  |
         +----+--------------------+--------------------+----------+--------------------+
-        |  3 | Episode 1: Startup | 2016-03-07T19:00:0 | 25:33    | https://softskills |
-        |    |  Opportunities and | 0Z                 |          | .audio/2016/03/07/ |
-        |    |  Switching Jobs    |                    |          | episode-1-startup- |
-        |    |                    |                    |          | opportunities-and- |
-        |    |                    |                    |          | switching-jobs/    |
+        |  3 | Episode 3: What to | 2016-03-21T19:00:0 | 25:33    | https://softskills |
+        |    |  look for in a dev | 0Z                 |          | .audio/2016/03/21/ |
+        |    |  team              |                    |          | episode-3-what-to- |
+        |    |                    |                    |          | look-for-in-a-dev- |
+        |    |                    |                    |          | team/              |
         +----+--------------------+--------------------+----------+--------------------+
       OUTPUT
 
@@ -156,17 +156,17 @@ RSpec.describe Pod::CLI do
           +---------------------------------------+--------------------------------------+
           |                 title                 |                 link                 |
           +---------------------------------------+--------------------------------------+
-          | Episode 3: What to look for in a dev  | https://softskills.audio/2016/03/21/ |
-          | team                                  | episode-3-what-to-look-for-in-a-dev- |
-          |                                       | team/                                |
+          | Episode 1: Startup Opportunities and  | https://softskills.audio/2016/03/07/ |
+          | Switching Jobs                        | episode-1-startup-opportunities-and- |
+          |                                       | switching-jobs/                      |
           +---------------------------------------+--------------------------------------+
           | Episode 2: Influencing your team and  | https://softskills.audio/2016/03/14/ |
           | dealing with anger                    | episode-2-influencing-your-team-and- |
           |                                       | dealing-with-anger/                  |
           +---------------------------------------+--------------------------------------+
-          | Episode 1: Startup Opportunities and  | https://softskills.audio/2016/03/07/ |
-          | Switching Jobs                        | episode-1-startup-opportunities-and- |
-          |                                       | switching-jobs/                      |
+          | Episode 3: What to look for in a dev  | https://softskills.audio/2016/03/21/ |
+          | team                                  | episode-3-what-to-look-for-in-a-dev- |
+          |                                       | team/                                |
           +---------------------------------------+--------------------------------------+
         OUTPUT
 

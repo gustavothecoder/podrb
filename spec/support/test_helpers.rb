@@ -43,10 +43,10 @@ module TestHelpers
     def soft_skills_engineering_episodes
       [
         {
-          title: "Episode 3: What to look for in a dev team",
-          release_date: "2016-03-21T19:00:00Z",
+          title: "Episode 1: Startup Opportunities and Switching Jobs",
+          release_date: "2016-03-07T19:00:00Z",
           duration: "25:33",
-          link: "https://softskills.audio/2016/03/21/episode-3-what-to-look-for-in-a-dev-team/"
+          link: "https://softskills.audio/2016/03/07/episode-1-startup-opportunities-and-switching-jobs/"
         },
         {
           title: "Episode 2: Influencing your team and dealing with anger",
@@ -55,10 +55,10 @@ module TestHelpers
           link: "https://softskills.audio/2016/03/14/episode-2-influencing-your-team-and-dealing-with-anger/"
         },
         {
-          title: "Episode 1: Startup Opportunities and Switching Jobs",
-          release_date: "2016-03-07T19:00:00Z",
+          title: "Episode 3: What to look for in a dev team",
+          release_date: "2016-03-21T19:00:00Z",
           duration: "25:33",
-          link: "https://softskills.audio/2016/03/07/episode-1-startup-opportunities-and-switching-jobs/"
+          link: "https://softskills.audio/2016/03/21/episode-3-what-to-look-for-in-a-dev-team/"
         }
       ]
     end
@@ -75,10 +75,10 @@ module TestHelpers
     def fabio_akita_episodes
       [
         {
-          title: "Akitando #0002 - Akitando em Seoul - Parte 2",
-          release_date: "2020-02-20T00:31:00Z",
-          duration: "00:10:55",
-          link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando-0002---Akitando-em-Seoul---Parte-2-eaundj"
+          title: "Akitando - Piloto",
+          release_date: "2020-02-20T00:01:49Z",
+          duration: "00:00:34",
+          link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando---Piloto-eaumu2"
         },
         {
           title: "Akitando #0001 - Akitando em Seoul - Parte 1",
@@ -87,10 +87,10 @@ module TestHelpers
           link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando-0001---Akitando-em-Seoul---Parte-1-eaunab"
         },
         {
-          title: "Akitando - Piloto",
-          release_date: "2020-02-20T00:01:49Z",
-          duration: "00:00:34",
-          link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando---Piloto-eaumu2"
+          title: "Akitando #0002 - Akitando em Seoul - Parte 2",
+          release_date: "2020-02-20T00:31:00Z",
+          duration: "00:10:55",
+          link: "https://podcasters.spotify.com/pod/show/akitando/episodes/Akitando-0002---Akitando-em-Seoul---Parte-2-eaundj"
         }
       ]
     end

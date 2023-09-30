@@ -13,6 +13,7 @@ RSpec.describe Pod::Commands::Episodes do
         expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes
         result_episodes = result[:metadata][:records]
         3.times do |i|
+          expect(result_episodes[i].id).to be_a(Integer)
           expect(result_episodes[i].title).to eq(expected_episodes[i][:title])
           expect(result_episodes[i].release_date).to eq(expected_episodes[i][:release_date])
           expect(result_episodes[i].duration).to eq(expected_episodes[i][:duration])
@@ -30,6 +31,7 @@ RSpec.describe Pod::Commands::Episodes do
         expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes
         result_episodes = result[:metadata][:records]
         3.times do |i|
+          expect(result_episodes[i].id).to be_nil
           expect(result_episodes[i].title).to eq(expected_episodes[i][:title])
           expect(result_episodes[i].release_date).to be_nil
           expect(result_episodes[i].duration).to be_nil

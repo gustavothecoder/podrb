@@ -121,27 +121,28 @@ RSpec.describe Pod::CLI do
   describe "episodes command", :init_pod, :populate_db do
     it "returns the podcast episodes" do
       expected_output = <<~OUTPUT
-        +----------------------+----------------------+----------+---------------------+
-        |         title        |     release_date     | duration |         link        |
-        +----------------------+----------------------+----------+---------------------+
-        | Episode 3: What to l | 2016-03-21T19:00:00Z | 25:33    | https://softskills. |
-        | ook for in a dev tea |                      |          | audio/2016/03/21/ep |
-        | m                    |                      |          | isode-3-what-to-loo |
-        |                      |                      |          | k-for-in-a-dev-team |
-        |                      |                      |          | /                   |
-        +----------------------+----------------------+----------+---------------------+
-        | Episode 2: Influenci | 2016-03-14T19:00:00Z | 25:33    | https://softskills. |
-        | ng your team and dea |                      |          | audio/2016/03/14/ep |
-        | ling with anger      |                      |          | isode-2-influencing |
-        |                      |                      |          | -your-team-and-deal |
-        |                      |                      |          | ing-with-anger/     |
-        +----------------------+----------------------+----------+---------------------+
-        | Episode 1: Startup O | 2016-03-07T19:00:00Z | 25:33    | https://softskills. |
-        | pportunities and Swi |                      |          | audio/2016/03/07/ep |
-        | tching Jobs          |                      |          | isode-1-startup-opp |
-        |                      |                      |          | ortunities-and-swit |
-        |                      |                      |          | ching-jobs/         |
-        +----------------------+----------------------+----------+---------------------+
+        +----+--------------------+--------------------+----------+--------------------+
+        | id |        title       |    release_date    | duration |        link        |
+        +----+--------------------+--------------------+----------+--------------------+
+        |  1 | Episode 3: What to | 2016-03-21T19:00:0 | 25:33    | https://softskills |
+        |    |  look for in a dev | 0Z                 |          | .audio/2016/03/21/ |
+        |    |  team              |                    |          | episode-3-what-to- |
+        |    |                    |                    |          | look-for-in-a-dev- |
+        |    |                    |                    |          | team/              |
+        +----+--------------------+--------------------+----------+--------------------+
+        |  2 | Episode 2: Influen | 2016-03-14T19:00:0 | 25:33    | https://softskills |
+        |    | cing your team and | 0Z                 |          | .audio/2016/03/14/ |
+        |    |  dealing with ange |                    |          | episode-2-influenc |
+        |    | r                  |                    |          | ing-your-team-and- |
+        |    |                    |                    |          | dealing-with-anger |
+        |    |                    |                    |          | /                  |
+        +----+--------------------+--------------------+----------+--------------------+
+        |  3 | Episode 1: Startup | 2016-03-07T19:00:0 | 25:33    | https://softskills |
+        |    |  Opportunities and | 0Z                 |          | .audio/2016/03/07/ |
+        |    |  Switching Jobs    |                    |          | episode-1-startup- |
+        |    |                    |                    |          | opportunities-and- |
+        |    |                    |                    |          | switching-jobs/    |
+        +----+--------------------+--------------------+----------+--------------------+
       OUTPUT
 
       result = TestHelpers::CLI.run_cmd("pod episodes 1")

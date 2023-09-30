@@ -5,6 +5,7 @@ require "thor"
 require_relative "commands"
 require_relative "outputs/text"
 require_relative "storage/sql"
+require_relative "shell_interface"
 
 module Pod
   class CLI < Thor
@@ -52,6 +53,17 @@ module Pod
       result = Pod::Commands::Episodes.call(podcast_id, options)
 
       puts Pod::Outputs::Text::Episodes.call(result)
+    end
+
+    desc "open EPISODE_ID", "Open a episode in the browser"
+    # TODO
+    # method_option :archive, type: :boolean, default: false, desc: "Archive the episode."
+    def open(episode_id)
+      result = Pod::Commands::Open.call(episode_id)
+
+      Pod::ShellInterface.call(result[:metadata])
+
+      puts Pod::Outputs::Text::Open.call(result)
     end
   end
 end

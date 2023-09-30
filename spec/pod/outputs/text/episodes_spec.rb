@@ -13,28 +13,26 @@ RSpec.describe Pod::Outputs::Text::Episodes do
                 title: "001",
                 release_date: "2023/09/24",
                 duration: "00:34:09",
-                description: "First ep",
                 link: "https://pod1.com/ep1"
               ),
               Pod::Entities::Episode.new(
                 title: "002",
                 release_date: "2023/09/25",
                 duration: "00:17:17",
-                description: "Second ep",
                 link: "https://pod1.com/ep2"
               )
             ],
-            columns: %w[title release_date duration description link]
+            columns: %w[title release_date duration link]
           }
         )
         expected_output = <<~OUTPUT
-          +-------+--------------+----------+-------------+----------------------+
-          | title | release_date | duration | description |         link         |
-          +-------+--------------+----------+-------------+----------------------+
-          | 001   | 2023/09/24   | 00:34:09 | First ep    | https://pod1.com/ep1 |
-          +-------+--------------+----------+-------------+----------------------+
-          | 002   | 2023/09/25   | 00:17:17 | Second ep   | https://pod1.com/ep2 |
-          +-------+--------------+----------+-------------+----------------------+
+          +-------+--------------+----------+----------------------+
+          | title | release_date | duration |         link         |
+          +-------+--------------+----------+----------------------+
+          | 001   | 2023/09/24   | 00:34:09 | https://pod1.com/ep1 |
+          +-------+--------------+----------+----------------------+
+          | 002   | 2023/09/25   | 00:17:17 | https://pod1.com/ep2 |
+          +-------+--------------+----------+----------------------+
         OUTPUT
 
         msg = response.call
@@ -54,14 +52,12 @@ RSpec.describe Pod::Outputs::Text::Episodes do
                 title: "001",
                 release_date: nil,
                 duration: "00:34:09",
-                description: nil,
                 link: "https://pod1.com/ep1"
               ),
               Pod::Entities::Episode.new(
                 title: "002",
                 release_date: nil,
                 duration: "00:17:17",
-                description: nil,
                 link: "https://pod1.com/ep2"
               )
             ],
@@ -91,7 +87,7 @@ RSpec.describe Pod::Outputs::Text::Episodes do
           details: :not_found,
           metadata: {
             records: [],
-            columns: %w[title release_date duration description link]
+            columns: %w[title release_date duration link]
           }
         )
         expected_output = <<~OUTPUT

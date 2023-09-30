@@ -26,7 +26,6 @@ module Pod
           create table episodes (
             id integer primary key,
             title text not null,
-            description text,
             release_date text,
             duration text,
             link text not null,

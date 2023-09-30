@@ -30,7 +30,6 @@ RSpec.describe Pod::FeedParser do
           expect(parsed.title).to eq(expected[:title])
           expect(parsed.release_date).to eq(expected[:release_date])
           expect(parsed.duration).to eq(expected[:duration])
-          expect(parsed.description).to match(expected[:description])
           expect(parsed.link).to eq(expected[:link])
         end
       end

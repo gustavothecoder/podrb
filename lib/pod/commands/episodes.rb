@@ -3,7 +3,7 @@
 module Pod
   module Commands
     class Episodes < Base
-      ALL_COLUMNS = %w[title release_date duration description link].freeze
+      ALL_COLUMNS = %w[title release_date duration link].freeze
       private_constant :ALL_COLUMNS
 
       def call(podcast_id, options = {})

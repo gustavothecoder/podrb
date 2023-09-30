@@ -16,7 +16,6 @@ RSpec.describe Pod::Commands::Episodes do
           expect(result_episodes[i].title).to eq(expected_episodes[i][:title])
           expect(result_episodes[i].release_date).to eq(expected_episodes[i][:release_date])
           expect(result_episodes[i].duration).to eq(expected_episodes[i][:duration])
-          expect(result_episodes[i].description).to eq(expected_episodes[i][:description])
           expect(result_episodes[i].link).to eq(expected_episodes[i][:link])
         end
       end
@@ -34,7 +33,6 @@ RSpec.describe Pod::Commands::Episodes do
           expect(result_episodes[i].title).to eq(expected_episodes[i][:title])
           expect(result_episodes[i].release_date).to be_nil
           expect(result_episodes[i].duration).to be_nil
-          expect(result_episodes[i].description).to be_nil
           expect(result_episodes[i].link).to eq(expected_episodes[i][:link])
         end
       end

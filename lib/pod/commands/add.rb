@@ -34,13 +34,12 @@ module Pod
           parsed_feed.episodes.each do |e|
             db.execute <<-SQL
               insert into episodes
-              (title, release_date, podcast_id, duration, description, link)
+              (title, release_date, podcast_id, duration, link)
               values (
                 "#{escape_double_quotes(e.title)}",
                 "#{escape_double_quotes(e.release_date)}",
                 #{inserted_podcast_id},
                 "#{escape_double_quotes(e.duration)}",
-                "#{escape_double_quotes(e.description)}",
                 "#{escape_double_quotes(e.link)}"
               );
             SQL

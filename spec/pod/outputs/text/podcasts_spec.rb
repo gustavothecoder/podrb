@@ -85,10 +85,29 @@ RSpec.describe Pod::Outputs::Text::Podcasts do
         response = described_class.new(
           status: :success,
           details: :empty_table,
-          data: []
+          metadata: []
         )
         expected_output = <<~OUTPUT
           No podcasts yet.
+        OUTPUT
+
+        msg = response.call
+
+        expect(msg).to eq(expected_output)
+      end
+    end
+
+    context "when the user select a invalid column" do
+      it "generates the correct message" do
+        response = described_class.new(
+          status: :failure,
+          details: :invalid_column,
+          metadata: {
+            invalid_column: "link"
+          }
+        )
+        expected_output = <<~OUTPUT
+          This field is invalid: link
         OUTPUT
 
         msg = response.call

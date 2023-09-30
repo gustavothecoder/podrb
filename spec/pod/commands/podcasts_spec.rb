@@ -50,11 +50,15 @@ RSpec.describe Pod::Commands::Podcasts do
       end
     end
 
-    # TODO
-    # context "when fields parameter is used, but the value is invalid" do
-    #   it "returns a failure response without data" do
-    #   end
-    # end
+    context "when fields parameter is used, but the value is invalid", :populate_db do
+      it "returns a failure response without data" do
+        result = described_class.call({"fields" => %w[name link]})
+
+        expect(result[:status]).to eq(:failure)
+        expect(result[:details]).to eq(:invalid_column)
+        expect(result[:metadata][:invalid_column]).to eq("link")
+      end
+    end
 
     context "when there are no podcasts" do
       it "returns a success response without data" do

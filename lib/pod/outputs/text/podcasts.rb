@@ -18,6 +18,10 @@ module Pod
             <<~OUTPUT
               No podcasts yet.
             OUTPUT
+          when :invalid_column
+            <<~OUTPUT
+              This field is invalid: #{@context[:metadata][:invalid_column]}
+            OUTPUT
           end
         end
       end

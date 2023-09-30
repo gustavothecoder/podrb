@@ -18,6 +18,15 @@ module Pod
           details: records.empty? ? :empty_table : :records_found,
           metadata: {records: records, columns: columns}
         )
+      rescue Pod::Storage::Exceptions::WrongSyntax => exc
+        cause = exc.message
+        if cause.include?("no such column")
+          invalid_column = cause.delete_prefix("no such column: ")
+          build_failure_response(
+            details: :invalid_column,
+            metadata: {invalid_column: invalid_column}
+          )
+        end
       end
     end
   end

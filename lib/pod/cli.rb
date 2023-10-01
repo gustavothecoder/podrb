@@ -69,6 +69,9 @@ module Pod
     end
 
     # TODO
+    # 1. Create column `archived_at`
+    # 2. Create Archive command
+    # 3. Create Archive text output
     # desc "archive EPISODE_ID", "Archive the episode."
 
     # TODO

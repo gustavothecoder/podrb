@@ -38,18 +38,21 @@ RSpec.describe Pod::Commands::Add do
            "release_date" => expected_episodes[0][:release_date],
            "duration" => expected_episodes[0][:duration],
            "link" => expected_episodes[0][:link],
+           "archived_at" => nil,
            "podcast_id" => added_podcast[0]},
           {"id" => 2,
            "title" => expected_episodes[1][:title],
            "release_date" => expected_episodes[1][:release_date],
            "duration" => expected_episodes[1][:duration],
            "link" => expected_episodes[1][:link],
+           "archived_at" => nil,
            "podcast_id" => added_podcast[0]},
           {"id" => 3,
            "title" => expected_episodes[2][:title],
            "release_date" => expected_episodes[2][:release_date],
            "duration" => expected_episodes[2][:duration],
            "link" => expected_episodes[2][:link],
+           "archived_at" => nil,
            "podcast_id" => added_podcast[0]}
         ])
       end
@@ -85,18 +88,21 @@ RSpec.describe Pod::Commands::Add do
            "release_date" => expected_episodes[0][:release_date],
            "duration" => expected_episodes[0][:duration],
            "link" => expected_episodes[0][:link],
+           "archived_at" => nil,
            "podcast_id" => added_podcast[0]},
           {"id" => 2,
            "title" => expected_episodes[1][:title],
            "release_date" => expected_episodes[1][:release_date],
            "duration" => expected_episodes[1][:duration],
            "link" => expected_episodes[1][:link],
+           "archived_at" => nil,
            "podcast_id" => added_podcast[0]},
           {"id" => 3,
            "title" => expected_episodes[2][:title],
            "release_date" => expected_episodes[2][:release_date],
            "duration" => expected_episodes[2][:duration],
            "link" => expected_episodes[2][:link],
+           "archived_at" => nil,
            "podcast_id" => added_podcast[0]}
         ])
       end

@@ -47,9 +47,9 @@ module Pod
       puts Pod::Outputs::Text::Podcasts.call(result)
     end
 
-    # TODO: add `order` option
     desc "episodes PODCAST_ID", "List the podcast episodes"
     method_option :fields, type: :array, default: [], desc: "Select the fields that will be displayed."
+    method_option :order_by, type: :string, default: "id", desc: "Choose how pod will order the episodes."
     def episodes(podcast_id)
       result = Pod::Commands::Episodes.call(podcast_id, options)
 

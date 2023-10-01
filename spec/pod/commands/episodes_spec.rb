@@ -59,5 +59,22 @@ RSpec.describe Pod::Commands::Episodes do
         expect(result[:metadata][:records]).to eq([])
       end
     end
+
+    context "when order_by parameter is used", :populate_db do
+      it "returns a success response using the order_by parameter" do
+        result = described_class.call(1, {"order_by" => "id desc"})
+
+        expect(result[:status]).to eq(:success)
+        expect(result[:details]).to eq(:records_found)
+        expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes.reverse
+        result_episodes = result[:metadata][:records]
+        3.times do |i|
+          expect(result_episodes[i].title).to eq(expected_episodes[i][:title])
+          expect(result_episodes[i].release_date).to eq(expected_episodes[i][:release_date])
+          expect(result_episodes[i].duration).to eq(expected_episodes[i][:duration])
+          expect(result_episodes[i].link).to eq(expected_episodes[i][:link])
+        end
+      end
+    end
   end
 end

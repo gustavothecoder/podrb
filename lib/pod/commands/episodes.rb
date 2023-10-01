@@ -9,11 +9,17 @@ module Pod
       def call(podcast_id, options = {})
         parsed_options = parse_options(options)
         columns = parsed_options["fields"] || ALL_COLUMNS
+        order_by = parsed_options["order_by"] || "id"
+
         db = Pod::Storage::SQL.new(db: pod_db_dir)
-        records = db.query(
-          "select #{columns.join(", ")} from episodes where podcast_id = #{podcast_id}",
-          entity: Pod::Entities::Episode
-        )
+        sql_code = <<~SQL
+          select #{columns.join(", ")}
+          from episodes
+          where podcast_id = ?
+          order by #{order_by};
+        SQL
+        records = db.query(sql_code, [podcast_id], entity: Pod::Entities::Episode)
+
         build_success_response(
           details: records.empty? ? :not_found : :records_found,
           metadata: {records: records, columns: columns}

@@ -15,10 +15,10 @@ module Pod
         sql_code = <<~SQL
           select #{columns.join(", ")}
           from episodes
-          where podcast_id = ?
+          where podcast_id = #{podcast_id}
           order by #{order_by};
         SQL
-        records = db.query(sql_code, [podcast_id], entity: Pod::Entities::Episode)
+        records = db.query(sql_code, Pod::Entities::Episode)
 
         build_success_response(
           details: records.empty? ? :not_found : :records_found,

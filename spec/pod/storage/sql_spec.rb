@@ -195,7 +195,7 @@ RSpec.describe Pod::Storage::SQL do
           select *
           from podcasts;
         SQL
-        result = db.query(query_sql, entity: Pod::Entities::Podcast)
+        result = db.query(query_sql, Pod::Entities::Podcast)
 
         expect(result.size).to eq(1)
         entity = result.first
@@ -204,58 +204,6 @@ RSpec.describe Pod::Storage::SQL do
         expect(entity.description).to eq("A really good podcast.")
         expect(entity.feed).to eq("https://www.podcast.com/feed.xml")
         expect(entity.website).to eq("https://www.podcast.com")
-      end
-    end
-
-    context "when args parameter is used" do
-      it "returns the query result applying the args" do
-        FileUtils.mkdir_p(TestHelpers::Path.config_dir)
-        db = described_class.new(db: TestHelpers::Path.db_dir)
-        db.execute <<-SQL
-          create table podcasts (
-            name text not null,
-            description text,
-            feed text not null,
-            website text
-          );
-        SQL
-        db.execute <<-SQL
-          insert into podcasts
-          (name, description, feed, website)
-          values (
-            "Podcast",
-            "A really good podcast.",
-            "https://www.podcast.com/feed.xml",
-            "https://www.podcast.com"
-          );
-        SQL
-        db.execute <<-SQL
-          insert into podcasts
-          (name, description, feed, website)
-          values (
-            "Castpod",
-            "A nice description.",
-            "https://www.castpod.com/feed.xml",
-            "https://www.castpod.com"
-          );
-        SQL
-
-        query_sql = <<-SQL
-          select *
-          from podcasts
-          where name = ?;
-        SQL
-        result = db.query(query_sql, ["Castpod"])
-
-        expect(result.size).to eq(1)
-        expect(
-          result.first
-        ).to eq(
-          "name" => "Castpod",
-          "description" => "A nice description.",
-          "feed" => "https://www.castpod.com/feed.xml",
-          "website" => "https://www.castpod.com"
-        )
       end
     end
 

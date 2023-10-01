@@ -24,9 +24,10 @@ module Pod
         raise Exceptions::ConstraintViolation, exc.message
       end
 
-      def query(sql, args = [], entity: nil)
+      def query(sql, entity = nil)
         parsed_result = []
-        @conn.query(sql, args) do |result|
+
+        @conn.query(sql) do |result|
           result.each_hash do |row|
             parsed_result << if entity.nil?
               row

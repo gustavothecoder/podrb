@@ -3,7 +3,9 @@
 module Pod
   module Commands
     class Open < Base
-      def call(episode_id)
+      def call(episode_id, options = {})
+        parsed_options = parse_options(options)
+        browser = parsed_options["browser"] || "firefox"
         db = Pod::Storage::SQL.new(db: pod_db_dir)
         episode = db.query(
           "select link from episodes where id = #{episode_id}",
@@ -12,8 +14,8 @@ module Pod
         return build_failure_response(details: :not_found) if episode.nil?
 
         build_success_response(
-          details: :can_open,
-          metadata: {cmd: "/usr/bin/firefox #{episode.link}"}
+          details: :episode_found,
+          metadata: {cmd: "#{browser} #{episode.link}"}
         )
       end
     end

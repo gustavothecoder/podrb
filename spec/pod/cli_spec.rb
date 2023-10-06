@@ -176,4 +176,16 @@ RSpec.describe Pod::CLI do
       end
     end
   end
+
+  describe "archive command", :init_pod, :populate_db do
+    it "archives the episode" do
+      expected_output = <<~OUTPUT
+        Episode successfully archived!
+      OUTPUT
+
+      result = TestHelpers::CLI.run_cmd("pod archive 1")
+
+      expect(result).to eq(expected_output.chomp)
+    end
+  end
 end

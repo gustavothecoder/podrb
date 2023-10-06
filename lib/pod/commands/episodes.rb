@@ -16,6 +16,7 @@ module Pod
           select #{columns.join(", ")}
           from episodes
           where podcast_id = #{podcast_id}
+            and archived_at is null
           order by #{order_by};
         SQL
         records = db.query(sql_code, Pod::Entities::Episode)

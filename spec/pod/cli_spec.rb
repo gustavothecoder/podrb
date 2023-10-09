@@ -151,7 +151,7 @@ RSpec.describe Pod::CLI do
     end
 
     context "when the fields parameter is used" do
-      it "returns the podcast records, but only the selected fields" do
+      it "returns the podcast episodes, but only the selected fields" do
         expected_output = <<~OUTPUT
           +---------------------------------------+--------------------------------------+
           |                 title                 |                 link                 |
@@ -171,6 +171,47 @@ RSpec.describe Pod::CLI do
         OUTPUT
 
         result = TestHelpers::CLI.run_cmd("pod episodes 1 --fields=title link")
+
+        expect(result).to eq(expected_output.chomp)
+      end
+    end
+
+    context "when the order_by parameter is used" do
+      it "returns the podcast episodes, but using the chosed order" do
+        expected_output = <<~OUTPUT
+          +----+---------------------------------------------------------+
+          | id |                          title                          |
+          +----+---------------------------------------------------------+
+          |  3 | Episode 3: What to look for in a dev team               |
+          +----+---------------------------------------------------------+
+          |  2 | Episode 2: Influencing your team and dealing with anger |
+          +----+---------------------------------------------------------+
+          |  1 | Episode 1: Startup Opportunities and Switching Jobs     |
+          +----+---------------------------------------------------------+
+        OUTPUT
+
+        result = TestHelpers::CLI.run_cmd("pod episodes 1 --fields=id title --order-by='id desc'")
+
+        expect(result).to eq(expected_output.chomp)
+      end
+    end
+
+    context "when there are archived episodes, but the --all option is used" do
+      it "returns all the podcast episodes" do
+        expected_output = <<~OUTPUT
+          +----+---------------------------------------------------------+
+          | id |                          title                          |
+          +----+---------------------------------------------------------+
+          |  1 | Episode 1: Startup Opportunities and Switching Jobs     |
+          +----+---------------------------------------------------------+
+          |  2 | Episode 2: Influencing your team and dealing with anger |
+          +----+---------------------------------------------------------+
+          |  3 | Episode 3: What to look for in a dev team               |
+          +----+---------------------------------------------------------+
+        OUTPUT
+
+        TestHelpers::CLI.run_cmd("pod archive 1")
+        result = TestHelpers::CLI.run_cmd("pod episodes 1 --fields=id title --all")
 
         expect(result).to eq(expected_output.chomp)
       end

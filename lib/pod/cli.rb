@@ -50,8 +50,7 @@ module Pod
     desc "episodes PODCAST_ID", "List the podcast episodes"
     method_option :fields, type: :array, default: [], desc: "Select the fields that will be displayed."
     method_option :order_by, type: :string, default: "id", desc: "Choose how pod will order the episodes."
-    # TODO
-    # method_option :all, type: :bollean, default: false, desc: "List archived episodes too."
+    method_option :all, type: :boolean, default: false, desc: "List archived episodes too."
     def episodes(podcast_id)
       result = Pod::Commands::Episodes.call(podcast_id, options)
 
@@ -70,12 +69,6 @@ module Pod
       puts Pod::Outputs::Text::Open.call(result)
     end
 
-    # TODO
-    # [X] Create column `archived_at`
-    # [X] Create Archive command
-    # [X] Create Archive text output
-    # [X] Create CLI command
-    # [ ] Adjust `episodes` to ignore archived episodes
     desc "archive EPISODE_ID", "Archive the episode"
     def archive(episode_id)
       result = Pod::Commands::Archive.call(episode_id)

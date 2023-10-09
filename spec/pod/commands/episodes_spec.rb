@@ -99,5 +99,25 @@ RSpec.describe Pod::Commands::Episodes do
         end
       end
     end
+
+    context "when there are archived episodes, but the all option is used", :populate_db do
+      it "returns all episodes, including the archived ones" do
+        Pod::Commands::Archive.call(3)
+        result = described_class.call(1, {"all" => true})
+
+        expect(result[:status]).to eq(:success)
+        expect(result[:details]).to eq(:records_found)
+        expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes
+        result_episodes = result[:metadata][:records]
+        expect(result_episodes.size).to eq(3)
+        3.times do |i|
+          expect(result_episodes[i].id).to be_a(Integer)
+          expect(result_episodes[i].title).to eq(expected_episodes[i][:title])
+          expect(result_episodes[i].release_date).to eq(expected_episodes[i][:release_date])
+          expect(result_episodes[i].duration).to eq(expected_episodes[i][:duration])
+          expect(result_episodes[i].link).to eq(expected_episodes[i][:link])
+        end
+      end
+    end
   end
 end

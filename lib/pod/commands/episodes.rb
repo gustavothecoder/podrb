@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Pod
   module Commands
     class Episodes < Base
@@ -8,17 +6,22 @@ module Pod
 
       def call(podcast_id, options = {})
         parsed_options = parse_options(options)
-        columns = parsed_options["fields"] || ALL_COLUMNS
-        order_by = parsed_options["order_by"] || "id"
 
-        db = Pod::Storage::SQL.new(db: pod_db_dir)
+        columns = parsed_options["fields"] || ALL_COLUMNS
         sql_code = <<~SQL
           select #{columns.join(", ")}
           from episodes
           where podcast_id = #{podcast_id}
-            and archived_at is null
-          order by #{order_by};
         SQL
+
+        unless parsed_options["all"]
+          sql_code << "and archived_at is null\n"
+        end
+
+        order_by = parsed_options["order_by"] || "id"
+        sql_code << "order by #{order_by};\n"
+
+        db = Pod::Storage::SQL.new(db: pod_db_dir)
         records = db.query(sql_code, Pod::Entities::Episode)
 
         build_success_response(

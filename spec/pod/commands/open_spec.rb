@@ -37,5 +37,18 @@ RSpec.describe Pod::Commands::Open do
         )
       end
     end
+
+    context "when the archive option is used", :populate_db do
+      it "returns a success response using the archive option" do
+        result = described_class.call(1, {"archive" => true})
+
+        expect(result[:status]).to eq(:success)
+        expect(result[:details]).to eq(:episode_found)
+        expect(result[:metadata][:cmd]).to eq(
+          "firefox #{TestHelpers::Data.soft_skills_engineering_episodes[0][:link]}" \
+          " && bundle exec pod archive 1"
+        )
+      end
+    end
   end
 end

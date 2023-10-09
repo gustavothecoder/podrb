@@ -59,8 +59,7 @@ module Pod
 
     desc "open EPISODE_ID", "Open a episode in the browser"
     method_option :browser, type: :string, default: "firefox", desc: "Choose the browser."
-    # TODO
-    # method_option :archive, type: :boolean, default: false, desc: "Archive the episode."
+    method_option :archive, type: :boolean, default: false, desc: "Archive the episode."
     def open(episode_id)
       result = Pod::Commands::Open.call(episode_id, options)
 

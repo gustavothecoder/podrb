@@ -229,4 +229,17 @@ RSpec.describe Pod::CLI do
       expect(result).to eq(expected_output.chomp)
     end
   end
+
+  describe "dearchive command", :init_pod, :populate_db do
+    it "dearchives the episode" do
+      expected_output = <<~OUTPUT
+        Episode successfully dearchived!
+      OUTPUT
+
+      TestHelpers::CLI.run_cmd("pod archive 1")
+      result = TestHelpers::CLI.run_cmd("pod dearchive 1")
+
+      expect(result).to eq(expected_output.chomp)
+    end
+  end
 end

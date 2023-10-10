@@ -7,6 +7,7 @@ require_relative "commands/podcasts"
 require_relative "commands/episodes"
 require_relative "commands/open"
 require_relative "commands/archive"
+require_relative "commands/dearchive"
 
 module Pod
   module Commands; end

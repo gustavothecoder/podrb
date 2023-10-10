@@ -75,8 +75,12 @@ module Pod
       puts Pod::Outputs::Text::Archive.call(result)
     end
 
-    # TODO
-    # desc "dearchive EPISODE_ID", "Dearchive the episode."
+    desc "dearchive EPISODE_ID", "Dearchive the episode."
+    def dearchive(episode_id)
+      result = Pod::Commands::Dearchive.call(episode_id)
+
+      puts Pod::Outputs::Text::Dearchive.call(result)
+    end
 
     # TODO
     # desc "sync PODCAST_ID", "Synce the podcast."

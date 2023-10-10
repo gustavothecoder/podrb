@@ -242,4 +242,16 @@ RSpec.describe Pod::CLI do
       expect(result).to eq(expected_output.chomp)
     end
   end
+
+  describe "delete command", :init_pod, :populate_db do
+    it "deletes the podcast" do
+      expected_output = <<~OUTPUT
+        Podcast successfully deleted!
+      OUTPUT
+
+      result = TestHelpers::CLI.run_cmd("pod delete 1")
+
+      expect(result).to eq(expected_output.chomp)
+    end
+  end
 end

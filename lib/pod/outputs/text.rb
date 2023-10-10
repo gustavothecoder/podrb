@@ -8,6 +8,7 @@ require_relative "text/episodes"
 require_relative "text/open"
 require_relative "text/archive"
 require_relative "text/dearchive"
+require_relative "text/delete"
 
 module Pod
   module Outputs

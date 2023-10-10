@@ -82,10 +82,14 @@ module Pod
       puts Pod::Outputs::Text::Dearchive.call(result)
     end
 
-    # TODO
-    # desc "sync PODCAST_ID", "Synce the podcast."
+    desc "delete PODCAST_ID", "Delete the podcast from pod's database."
+    def delete(podcast_id)
+      result = Pod::Commands::Delete.call(podcast_id)
+
+      puts Pod::Outputs::Text::Delete.call(result)
+    end
 
     # TODO
-    # desc "delete PODCAST_ID", "Delete the podcast from pod's database."
+    # desc "sync PODCAST_ID", "Synce the podcast."
   end
 end

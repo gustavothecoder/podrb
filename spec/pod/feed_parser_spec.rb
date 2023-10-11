@@ -31,6 +31,7 @@ RSpec.describe Pod::FeedParser do
           expect(parsed.release_date).to eq(expected[:release_date])
           expect(parsed.duration).to eq(expected[:duration])
           expect(parsed.link).to eq(expected[:link])
+          expect(parsed.external_id).to eq(expected[:external_id])
         end
       end
     end

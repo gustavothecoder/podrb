@@ -30,6 +30,7 @@ module Pod
             duration text,
             link text not null,
             archived_at text,
+            external_id string unique,
             podcast_id integer not null,
             foreign key(podcast_id) references podcasts(id)
           );

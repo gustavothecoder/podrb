@@ -27,7 +27,8 @@ module Pod
           title: e.title,
           release_date: e.published.iso8601,
           duration: e.itunes_duration,
-          link: e.url
+          link: e.url,
+          external_id: e.entry_id
         )
       end
 

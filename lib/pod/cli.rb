@@ -89,7 +89,13 @@ module Pod
       puts Pod::Outputs::Text::Delete.call(result)
     end
 
+    desc "sync PODCAST_ID", "Sync the podcast."
     # TODO
-    # desc "sync PODCAST_ID", "Synce the podcast."
+    # method_option :feed, type: :string, default: '', desc: "The feed that should be used."
+    def sync(podcast_id)
+      result = Pod::Commands::Sync.call(podcast_id)
+
+      puts Pod::Outputs::Text::Sync.call(result)
+    end
   end
 end

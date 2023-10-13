@@ -37,6 +37,10 @@ module Pod
       def parse_options(opts)
         opts.select { |k, v| v != "" && v != [] }
       end
+
+      def escape_double_quotes(str)
+        str.gsub("\"", "\"\"")
+      end
     end
   end
 end

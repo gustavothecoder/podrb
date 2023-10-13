@@ -66,6 +66,25 @@ module TestHelpers
       ]
     end
 
+    def all_soft_skills_engineering_episodes
+      soft_skills_engineering_episodes + [
+        {
+          title: "Episode 4: Should I build my personal brand?",
+          release_date: "2016-03-31T19:00:00Z",
+          duration: "25:33",
+          link: "https://softskills.audio/2016/03/31/episode-4-should-i-build-my-personal-brand/",
+          external_id: "45245e62-2797-4ac3-ada4-d550d12709c3"
+        },
+        {
+          title: "Episode 5: Developer Compensation",
+          release_date: "2016-04-04T19:00:00Z",
+          duration: "25:33",
+          link: "https://softskills.audio/2016/04/04/episode-5-developer-compensation/",
+          external_id: "c7d52477-3b2f-4d69-a5a4-8f2911ea1dfe"
+        }
+      ]
+    end
+
     def fabio_akita
       {
         name: "Akitando",

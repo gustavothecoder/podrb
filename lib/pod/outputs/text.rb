@@ -10,6 +10,7 @@ require_relative "text/archive"
 require_relative "text/dearchive"
 require_relative "text/delete"
 require_relative "text/sync"
+require_relative "text/update"
 
 module Pod
   module Outputs

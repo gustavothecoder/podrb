@@ -254,4 +254,16 @@ RSpec.describe Pod::CLI do
       expect(result).to eq(expected_output.chomp)
     end
   end
+
+  describe "update command", :init_pod, :populate_db do
+    it "updated the podcast" do
+      expected_output = <<~OUTPUT
+        Podcast successfully updated!
+      OUTPUT
+
+      result = TestHelpers::CLI.run_cmd("pod update 1 --feed=https://www.newfeed.com")
+
+      expect(result).to eq(expected_output.chomp)
+    end
+  end
 end

@@ -10,6 +10,7 @@ require_relative "commands/archive"
 require_relative "commands/dearchive"
 require_relative "commands/delete"
 require_relative "commands/sync"
+require_relative "commands/update"
 
 module Pod
   module Commands; end

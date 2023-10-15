@@ -90,12 +90,18 @@ module Pod
     end
 
     desc "sync PODCAST_ID", "Sync the podcast."
-    # TODO
-    # method_option :feed, type: :string, default: '', desc: "The feed that should be used."
     def sync(podcast_id)
       result = Pod::Commands::Sync.call(podcast_id)
 
       puts Pod::Outputs::Text::Sync.call(result)
+    end
+
+    desc "update PODCAST_ID", "Update the podcast attributes."
+    method_option :feed, type: :string, default: "", desc: "Define the podcast feed."
+    def update(podcast_id)
+      result = Pod::Commands::Update.call(podcast_id, options)
+
+      puts Pod::Outputs::Text::Update.call(result)
     end
   end
 end

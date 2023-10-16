@@ -29,6 +29,33 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 - [ ] Setup lefthook
 - [ ] Setup CI
 
+### File structure
+
+```
+.
+└── lib/
+    ├── pod/
+    │   ├── commands/
+    │   │   ├── init/
+    │   │   │   ├── runner.rb
+    │   │   │   └── output.rb
+    │   │   ├── add/
+    │   │   │   ├── runner.rb
+    │   │   │   └── output.rb
+    │   │   ├── archive/
+    │   │   │   ├── runner.rb
+    │   │   │   └── output.rb
+    │   │   └── ...
+    │   ├── infrastructure/
+    │   │   ├── feed_parser.rb
+    │   │   ├── shell_interface.rb
+    │   │   ├── dto.rb
+    │   │   ├── storage.rb
+    │   │   └── ...
+    │   └── cli.rb
+    └── pod.rb
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/gustavothecoder/pod.

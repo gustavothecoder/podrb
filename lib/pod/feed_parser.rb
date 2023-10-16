@@ -3,7 +3,7 @@
 require "net/http"
 require "feedjira"
 
-require_relative "entities"
+require_relative "infrastructure/dto"
 
 module Pod
   module FeedParser
@@ -15,7 +15,7 @@ module Pod
       end
       parsed_content = Feedjira.parse(content)
 
-      podcast = Pod::Entities::Podcast.new(
+      podcast = Infrastructure::DTO.new(
         name: parsed_content.title,
         description: parsed_content.description,
         feed: parsed_content.itunes_new_feed_url,
@@ -23,7 +23,7 @@ module Pod
       )
 
       episodes = parsed_content.entries.map do |e|
-        Pod::Entities::Episode.new(
+        Infrastructure::DTO.new(
           title: e.title,
           release_date: e.published.iso8601,
           duration: e.itunes_duration,
@@ -33,9 +33,9 @@ module Pod
       end
 
       # The #reverse is necessary to put the oldest episodes on the top of the feed.
-      Pod::Entities::Feed.new(podcast, episodes.reverse)
+      Infrastructure::DTO.new(podcast: podcast, episodes: episodes.reverse)
     rescue NoMethodError
-      Pod::Entities::Feed.new(nil, nil)
+      Infrastructure::DTO.new(podcast: nil, episodes: nil)
     end
   end
 end

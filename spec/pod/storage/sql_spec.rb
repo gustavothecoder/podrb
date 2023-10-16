@@ -157,53 +157,11 @@ RSpec.describe Pod::Storage::SQL do
         SQL
 
         expect(result.size).to eq(1)
-        expect(
-          result.first
-        ).to eq(
-          "name" => "Podcast",
-          "description" => "A really good podcast.",
-          "feed" => "https://www.podcast.com/feed.xml",
-          "website" => "https://www.podcast.com"
-        )
-      end
-    end
-
-    context "when entity parameter is used" do
-      it "returns entity objects" do
-        FileUtils.mkdir_p(TestHelpers::Path.config_dir)
-        db = described_class.new(db: TestHelpers::Path.db_dir)
-        db.execute <<-SQL
-          create table podcasts (
-            name text not null,
-            description text,
-            feed text not null,
-            website text
-          );
-        SQL
-        db.execute <<-SQL
-          insert into podcasts
-          (name, description, feed, website)
-          values (
-            "Podcast",
-            "A really good podcast.",
-            "https://www.podcast.com/feed.xml",
-            "https://www.podcast.com"
-          );
-        SQL
-
-        query_sql = <<-SQL
-          select *
-          from podcasts;
-        SQL
-        result = db.query(query_sql, Pod::Entities::Podcast)
-
-        expect(result.size).to eq(1)
-        entity = result.first
-        expect(entity).to be_a(Pod::Entities::Podcast)
-        expect(entity.name).to eq("Podcast")
-        expect(entity.description).to eq("A really good podcast.")
-        expect(entity.feed).to eq("https://www.podcast.com/feed.xml")
-        expect(entity.website).to eq("https://www.podcast.com")
+        dto = result.first
+        expect(dto.name).to eq("Podcast")
+        expect(dto.description).to eq("A really good podcast.")
+        expect(dto.feed).to eq("https://www.podcast.com/feed.xml")
+        expect(dto.website).to eq("https://www.podcast.com")
       end
     end
 

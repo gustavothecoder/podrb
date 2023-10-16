@@ -17,7 +17,6 @@ RSpec.describe Pod::FeedParser do
 
         result = described_class.call(podcast_feed)
 
-        expect(result).to be_a(Pod::Entities::Feed)
         expected_podcast = TestHelpers::Data.soft_skills_engineering
         expect(result.podcast.name).to eq(expected_podcast[:name])
         expect(result.podcast.description).to eq(expected_podcast[:description])
@@ -52,7 +51,6 @@ RSpec.describe Pod::FeedParser do
 
         result = described_class.call(podcast_feed)
 
-        expect(result).to be_a(Pod::Entities::Feed)
         expect(result.podcast).to be_nil
       end
     end

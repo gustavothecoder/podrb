@@ -10,10 +10,7 @@ module Pod
         parsed_options = parse_options(options)
         columns = parsed_options["fields"] || ALL_COLUMNS
         db = Pod::Storage::SQL.new(db: pod_db_dir)
-        records = db.query(
-          "select #{columns.join(", ")} from podcasts",
-          Pod::Entities::Podcast
-        )
+        records = db.query("select #{columns.join(", ")} from podcasts")
         build_success_response(
           details: records.empty? ? :empty_table : :records_found,
           metadata: {records: records, columns: columns}

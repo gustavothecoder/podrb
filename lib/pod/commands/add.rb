@@ -30,7 +30,7 @@ module Pod
             );
           SQL
 
-          inserted_podcast_id = db.query("select id from podcasts order by id desc limit 1;")[0][0]
+          inserted_podcast_id = db.query("select id from podcasts order by id desc limit 1;").first.id
           parsed_feed.episodes.each do |e|
             db.execute <<-SQL
               insert into episodes

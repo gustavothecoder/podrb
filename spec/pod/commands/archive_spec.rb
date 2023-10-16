@@ -6,7 +6,7 @@ RSpec.describe Pod::Commands::Archive do
   describe "#call", :init_pod do
     context "when episode is found", :populate_db do
       it "archive the episode and returns a success response" do
-        current_date = Time.now.iso8601.split("T")[0]
+        current_date = Time.now.iso8601
         db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
         result = described_class.call(1)
@@ -15,8 +15,8 @@ RSpec.describe Pod::Commands::Archive do
         expect(result[:details]).to eq(:episode_archived)
         after_archived_at = db.query(
           "select archived_at from episodes where id = 1;"
-        )[0]["archived_at"]
-        expect(after_archived_at).to include(current_date)
+        )[0].archived_at
+        expect(after_archived_at).to eq(current_date)
       end
     end
 

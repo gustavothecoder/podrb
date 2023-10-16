@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "sqlite3"
+require_relative "../infrastructure/dto"
 
 module Pod
   module Storage
@@ -24,16 +25,12 @@ module Pod
         raise Exceptions::ConstraintViolation, exc.message
       end
 
-      def query(sql, entity = nil)
+      def query(sql)
         parsed_result = []
 
         @conn.query(sql) do |result|
           result.each_hash do |row|
-            parsed_result << if entity.nil?
-              row
-            else
-              entity.new(row.transform_keys(&:to_sym))
-            end
+            parsed_result << Infrastructure::DTO.new(row.transform_keys(&:to_sym))
           end
         end
 

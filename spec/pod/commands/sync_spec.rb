@@ -10,7 +10,7 @@ RSpec.describe Pod::Commands::Sync do
 
         before_episode_titles = db.query(
           "select title from episodes where podcast_id = 1"
-        ).map { |e| e["title"] }
+        ).map { |d| d.title }
         expected_before_episode_titles = TestHelpers::Data
           .soft_skills_engineering_episodes
           .map { |e| e[:title] }
@@ -27,7 +27,7 @@ RSpec.describe Pod::Commands::Sync do
         expect(result[:details]).to eq(:podcast_synchronized)
         after_episode_titles = db.query(
           "select title from episodes where podcast_id = 1"
-        ).map { |e| e["title"] }
+        ).map { |d| d.title }
         expected_after_episode_titles = TestHelpers::Data
           .all_soft_skills_engineering_episodes
           .map { |e| e[:title] }
@@ -41,7 +41,7 @@ RSpec.describe Pod::Commands::Sync do
 
         before_episode_titles = db.query(
           "select title from episodes where podcast_id = 1"
-        ).map { |e| e["title"] }
+        ).map { |d| d.title }
 
         allow(
           Net::HTTP
@@ -54,7 +54,7 @@ RSpec.describe Pod::Commands::Sync do
         expect(result[:details]).to eq(:podcast_synchronized)
         after_episode_titles = db.query(
           "select title from episodes where podcast_id = 1"
-        ).map { |e| e["title"] }
+        ).map { |d| d.title }
         expect(after_episode_titles).to eq(before_episode_titles)
       end
     end

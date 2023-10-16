@@ -5,10 +5,7 @@ module Pod
         parsed_options = parse_options(options)
 
         db = Pod::Storage::SQL.new(db: pod_db_dir)
-        episode = db.query(
-          "select link from episodes where id = #{episode_id}",
-          Pod::Entities::Episode
-        )[0]
+        episode = db.query("select link from episodes where id = #{episode_id}")[0]
         return build_failure_response(details: :not_found) if episode.nil?
 
         browser = parsed_options["browser"] || "firefox"

@@ -9,13 +9,13 @@ RSpec.describe Pod::Outputs::Text::Podcasts do
           details: :records_found,
           metadata: {
             records: [
-              Pod::Entities::Podcast.new(
+              Infrastructure::DTO.new(
                 name: "pod1",
                 description: "pod1",
                 feed: "https://pod1.feed",
                 website: "https://pod1.com"
               ),
-              Pod::Entities::Podcast.new(
+              Infrastructure::DTO.new(
                 name: "pod2",
                 description: "pod2",
                 feed: "https://pod2.feed",
@@ -48,13 +48,13 @@ RSpec.describe Pod::Outputs::Text::Podcasts do
           details: :records_found,
           metadata: {
             records: [
-              Pod::Entities::Podcast.new(
+              Infrastructure::DTO.new(
                 name: "pod1",
                 description: nil,
                 feed: "https://pod1.feed",
                 website: nil
               ),
-              Pod::Entities::Podcast.new(
+              Infrastructure::DTO.new(
                 name: "pod2",
                 description: nil,
                 feed: "https://pod2.feed",

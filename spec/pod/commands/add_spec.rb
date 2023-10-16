@@ -20,44 +20,21 @@ RSpec.describe Pod::Commands::Add do
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:successfully_added)
         expected_podcast = TestHelpers::Data.soft_skills_engineering
-        expect(
-          added_podcast
-        ).to eq({
-          "id" => 1,
-          "name" => expected_podcast[:name],
-          "description" => expected_podcast[:description],
-          "feed" => expected_podcast[:feed],
-          "website" => expected_podcast[:website]
-        })
+        expect(added_podcast.id).to eq(1)
+        expect(added_podcast.name).to eq(expected_podcast[:name])
+        expect(added_podcast.description).to eq(expected_podcast[:description])
+        expect(added_podcast.feed).to eq(expected_podcast[:feed])
+        expect(added_podcast.website).to eq(expected_podcast[:website])
         expected_episodes = TestHelpers::Data.soft_skills_engineering_episodes
-        expect(
-          added_episodes
-        ).to eq([
-          {"id" => 1,
-           "title" => expected_episodes[0][:title],
-           "release_date" => expected_episodes[0][:release_date],
-           "duration" => expected_episodes[0][:duration],
-           "external_id" => expected_episodes[0][:external_id],
-           "link" => expected_episodes[0][:link],
-           "archived_at" => nil,
-           "podcast_id" => added_podcast[0]},
-          {"id" => 2,
-           "title" => expected_episodes[1][:title],
-           "release_date" => expected_episodes[1][:release_date],
-           "duration" => expected_episodes[1][:duration],
-           "external_id" => expected_episodes[1][:external_id],
-           "link" => expected_episodes[1][:link],
-           "archived_at" => nil,
-           "podcast_id" => added_podcast[0]},
-          {"id" => 3,
-           "title" => expected_episodes[2][:title],
-           "release_date" => expected_episodes[2][:release_date],
-           "duration" => expected_episodes[2][:duration],
-           "external_id" => expected_episodes[2][:external_id],
-           "link" => expected_episodes[2][:link],
-           "archived_at" => nil,
-           "podcast_id" => added_podcast[0]}
-        ])
+        3.times do |i|
+          expect(added_episodes[i].title).to eq(expected_episodes[i][:title])
+          expect(added_episodes[i].release_date).to eq(expected_episodes[i][:release_date])
+          expect(added_episodes[i].duration).to eq(expected_episodes[i][:duration])
+          expect(added_episodes[i].external_id).to eq(expected_episodes[i][:external_id])
+          expect(added_episodes[i].link).to eq(expected_episodes[i][:link])
+          expect(added_episodes[i].archived_at).to be_nil
+          expect(added_episodes[i].podcast_id).to eq(added_podcast.id)
+        end
       end
     end
 
@@ -73,44 +50,21 @@ RSpec.describe Pod::Commands::Add do
         expect(result[:status]).to eq(:success)
         expect(result[:details]).to eq(:successfully_added)
         expected_podcast = TestHelpers::Data.fabio_akita
-        expect(
-          added_podcast
-        ).to eq({
-          "id" => 1,
-          "name" => expected_podcast[:name],
-          "description" => expected_podcast[:description],
-          "feed" => expected_podcast[:feed],
-          "website" => expected_podcast[:website]
-        })
+        expect(added_podcast.id).to eq(1)
+        expect(added_podcast.name).to eq(expected_podcast[:name])
+        expect(added_podcast.description).to eq(expected_podcast[:description])
+        expect(added_podcast.feed).to eq(expected_podcast[:feed])
+        expect(added_podcast.website).to eq(expected_podcast[:website])
         expected_episodes = TestHelpers::Data.fabio_akita_episodes
-        expect(
-          added_episodes
-        ).to eq([
-          {"id" => 1,
-           "title" => expected_episodes[0][:title],
-           "release_date" => expected_episodes[0][:release_date],
-           "duration" => expected_episodes[0][:duration],
-           "external_id" => expected_episodes[0][:external_id],
-           "link" => expected_episodes[0][:link],
-           "archived_at" => nil,
-           "podcast_id" => added_podcast[0]},
-          {"id" => 2,
-           "title" => expected_episodes[1][:title],
-           "release_date" => expected_episodes[1][:release_date],
-           "duration" => expected_episodes[1][:duration],
-           "external_id" => expected_episodes[1][:external_id],
-           "link" => expected_episodes[1][:link],
-           "archived_at" => nil,
-           "podcast_id" => added_podcast[0]},
-          {"id" => 3,
-           "title" => expected_episodes[2][:title],
-           "release_date" => expected_episodes[2][:release_date],
-           "duration" => expected_episodes[2][:duration],
-           "external_id" => expected_episodes[2][:external_id],
-           "link" => expected_episodes[2][:link],
-           "archived_at" => nil,
-           "podcast_id" => added_podcast[0]}
-        ])
+        3.times do |i|
+          expect(added_episodes[i].title).to eq(expected_episodes[i][:title])
+          expect(added_episodes[i].release_date).to eq(expected_episodes[i][:release_date])
+          expect(added_episodes[i].duration).to eq(expected_episodes[i][:duration])
+          expect(added_episodes[i].external_id).to eq(expected_episodes[i][:external_id])
+          expect(added_episodes[i].link).to eq(expected_episodes[i][:link])
+          expect(added_episodes[i].archived_at).to be_nil
+          expect(added_episodes[i].podcast_id).to eq(added_podcast.id)
+        end
       end
     end
 
@@ -121,8 +75,8 @@ RSpec.describe Pod::Commands::Add do
 
         described_class.call(podcast_feed, options)
         result = described_class.call(podcast_feed, options)
-        number_of_podcasts = @db.query("select count(id) from podcasts")[0][0]
-        number_of_episodes = @db.query("select count(id) from episodes")[0][0]
+        number_of_podcasts = @db.query("select count(id) as count from podcasts")[0].count
+        number_of_episodes = @db.query("select count(id) as count from episodes")[0].count
 
         expect(result[:status]).to eq(:failure)
         expect(result[:details]).to eq(:already_added)
@@ -137,8 +91,8 @@ RSpec.describe Pod::Commands::Add do
         options = {"sync_url" => ""}
 
         result = described_class.call(podcast_feed, options)
-        number_of_podcasts = @db.query("select count(id) from podcasts")[0][0]
-        number_of_episodes = @db.query("select count(id) from episodes")[0][0]
+        number_of_podcasts = @db.query("select count(id) as count from podcasts")[0].count
+        number_of_episodes = @db.query("select count(id) as count from episodes")[0].count
 
         expect(result[:status]).to eq(:failure)
         expect(result[:details]).to eq(:badly_formatted)
@@ -153,8 +107,8 @@ RSpec.describe Pod::Commands::Add do
         options = {"sync_url" => ""}
 
         result = described_class.call(podcast_feed, options)
-        number_of_podcasts = @db.query("select count(id) from podcasts")[0][0]
-        number_of_episodes = @db.query("select count(id) from episodes")[0][0]
+        number_of_podcasts = @db.query("select count(id) as count from podcasts")[0].count
+        number_of_episodes = @db.query("select count(id) as count from episodes")[0].count
 
         expect(result[:status]).to eq(:failure)
         expect(result[:details]).to eq(:missing_sync_url)

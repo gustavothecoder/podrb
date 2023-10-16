@@ -9,14 +9,14 @@ RSpec.describe Pod::Outputs::Text::Episodes do
           details: :records_found,
           metadata: {
             records: [
-              Pod::Entities::Episode.new(
+              Infrastructure::DTO.new(
                 id: 1,
                 title: "001",
                 release_date: "2023/09/24",
                 duration: "00:34:09",
                 link: "https://pod1.com/ep1"
               ),
-              Pod::Entities::Episode.new(
+              Infrastructure::DTO.new(
                 id: 2,
                 title: "002",
                 release_date: "2023/09/25",
@@ -50,14 +50,14 @@ RSpec.describe Pod::Outputs::Text::Episodes do
           details: :records_found,
           metadata: {
             records: [
-              Pod::Entities::Episode.new(
+              Infrastructure::DTO.new(
                 id: nil,
                 title: "001",
                 release_date: nil,
                 duration: "00:34:09",
                 link: "https://pod1.com/ep1"
               ),
-              Pod::Entities::Episode.new(
+              Infrastructure::DTO.new(
                 id: nil,
                 title: "002",
                 release_date: nil,

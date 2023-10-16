@@ -22,7 +22,7 @@ module Pod
         sql_code << "order by #{order_by};\n"
 
         db = Pod::Storage::SQL.new(db: pod_db_dir)
-        records = db.query(sql_code, Pod::Entities::Episode)
+        records = db.query(sql_code)
 
         build_success_response(
           details: records.empty? ? :not_found : :records_found,

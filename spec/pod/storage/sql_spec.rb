@@ -96,7 +96,7 @@ RSpec.describe Pod::Storage::SQL do
       end
     end
 
-    context "when an DML statement is passed, but it vialates a constraint" do
+    context "when an DML statement is passed, but it violates a constraint" do
       it "doesn't execute the statement and raises an exception" do
         FileUtils.mkdir_p(TestHelpers::Path.config_dir)
         db = described_class.new(db: TestHelpers::Path.db_dir)

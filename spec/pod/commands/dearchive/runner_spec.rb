@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Dearchive do
+RSpec.describe Pod::Commands::Dearchive::Runner do
   describe "#call", :init_pod do
     context "when episode is found", :populate_db do
       it "dearchive the episode and returns a success response" do

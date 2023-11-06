@@ -77,9 +77,9 @@ module Pod
 
     desc "dearchive EPISODE_ID", "Dearchive the episode."
     def dearchive(episode_id)
-      result = Pod::Commands::Dearchive.call(episode_id)
+      result = Pod::Commands::Dearchive::Runner.call(episode_id)
 
-      puts Pod::Outputs::Text::Dearchive.call(result)
+      puts Pod::Commands::Dearchive::Output.call(result)
     end
 
     desc "delete PODCAST_ID", "Delete the podcast from pod's database."

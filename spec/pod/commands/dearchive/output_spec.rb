@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Dearchive do
+RSpec.describe Pod::Commands::Dearchive::Output do
   describe "#call" do
     context "when episode was dearchived" do
       it "generates the correct message" do

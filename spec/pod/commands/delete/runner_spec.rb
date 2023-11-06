@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Delete do
+RSpec.describe Pod::Commands::Delete::Runner do
   describe "#call", :init_pod do
     context "when the podcast is found", :populate_db do
       it "delete the podcast and its episodes" do

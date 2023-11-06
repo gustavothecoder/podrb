@@ -84,9 +84,9 @@ module Pod
 
     desc "delete PODCAST_ID", "Delete the podcast from pod's database."
     def delete(podcast_id)
-      result = Pod::Commands::Delete.call(podcast_id)
+      result = Pod::Commands::Delete::Runner.call(podcast_id)
 
-      puts Pod::Outputs::Text::Delete.call(result)
+      puts Pod::Commands::Delete::Output.call(result)
     end
 
     desc "sync PODCAST_ID", "Sync the podcast."

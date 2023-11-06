@@ -6,7 +6,7 @@ RSpec.describe Pod::Commands::Delete do
   describe "#call", :init_pod do
     context "when the podcast is found", :populate_db do
       it "delete the podcast and its episodes" do
-        db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+        db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
         result = described_class.call(1)
 

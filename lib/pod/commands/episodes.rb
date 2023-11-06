@@ -21,14 +21,14 @@ module Pod
         order_by = parsed_options["order_by"] || "id"
         sql_code << "order by #{order_by};\n"
 
-        db = Pod::Storage::SQL.new(db: pod_db_dir)
+        db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
         records = db.query(sql_code)
 
         build_success_response(
           details: records.empty? ? :not_found : :records_found,
           metadata: {records: records, columns: columns}
         )
-      rescue Pod::Storage::Exceptions::WrongSyntax => exc
+      rescue Infrastructure::Storage::Exceptions::WrongSyntax => exc
         cause = exc.message
         if cause.include?("no such column")
           invalid_column = cause.delete_prefix("no such column: ")

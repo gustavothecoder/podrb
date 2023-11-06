@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Storage::SQL do
+RSpec.describe Infrastructure::Storage::SQL do
   describe "#execute" do
     context "when a valid DDL statement is passed" do
       it "executes the statement and returns true" do
@@ -35,7 +35,7 @@ RSpec.describe Pod::Storage::SQL do
           );
         SQL
 
-        expect { db.execute(statement) }.to raise_error(Pod::Storage::Exceptions::WrongSyntax)
+        expect { db.execute(statement) }.to raise_error(Infrastructure::Storage::Exceptions::WrongSyntax)
       end
     end
 
@@ -92,7 +92,7 @@ RSpec.describe Pod::Storage::SQL do
 
         expect {
           db.execute(invalid_dml_statement)
-        }.to raise_error(Pod::Storage::Exceptions::WrongSyntax)
+        }.to raise_error(Infrastructure::Storage::Exceptions::WrongSyntax)
       end
     end
 
@@ -122,7 +122,7 @@ RSpec.describe Pod::Storage::SQL do
 
         expect {
           db.execute(constraint_violation)
-        }.to raise_error(Pod::Storage::Exceptions::ConstraintViolation)
+        }.to raise_error(Infrastructure::Storage::Exceptions::ConstraintViolation)
       end
     end
   end
@@ -190,7 +190,7 @@ RSpec.describe Pod::Storage::SQL do
 
         expect {
           db.query("select invalid from podcasts")
-        }.to raise_error(Pod::Storage::Exceptions::WrongSyntax)
+        }.to raise_error(Infrastructure::Storage::Exceptions::WrongSyntax)
       end
     end
   end

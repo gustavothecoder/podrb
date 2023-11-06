@@ -4,8 +4,8 @@ require "thor"
 
 require_relative "commands"
 require_relative "outputs/text"
-require_relative "storage/sql"
-require_relative "shell_interface"
+require_relative "infrastructure/storage/sql"
+require_relative "infrastructure/shell_interface"
 
 module Pod
   class CLI < Thor
@@ -63,7 +63,7 @@ module Pod
     def open(episode_id)
       result = Pod::Commands::Open.call(episode_id, options)
 
-      Pod::ShellInterface.call(result[:metadata])
+      Infrastructure::ShellInterface.call(result[:metadata])
 
       puts Pod::Outputs::Text::Open.call(result)
     end

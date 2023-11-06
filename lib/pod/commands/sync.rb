@@ -6,7 +6,7 @@ module Pod
   module Commands
     class Sync < Base
       def call(podcast_id)
-        db = Pod::Storage::SQL.new(db: pod_db_dir)
+        db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
         podcast = db.query("select feed from podcasts where id = #{podcast_id}").first
         return build_failure_response(details: :not_found) if podcast.nil?
 

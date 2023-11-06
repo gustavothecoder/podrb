@@ -6,7 +6,7 @@ RSpec.describe Pod::Commands::Update do
   describe "#call", :init_pod do
     context "when valid options are received and the podcast exists", :populate_db do
       it "returns a success response and updates the podcast" do
-        db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+        db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
         before_podcast = db.query("select * from podcasts").first
 
         result = described_class.call(1, {"feed" => "https://www.newfeed.com"})
@@ -25,7 +25,7 @@ RSpec.describe Pod::Commands::Update do
 
     context "when invalid options are received", :populate_db do
       it "returns a failure response and does not updates the podcast" do
-        db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+        db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
         before_podcast = db.query("select * from podcasts").first
 
         result = described_class.call(1, {"feed" => ""})

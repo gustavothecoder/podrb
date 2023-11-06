@@ -7,7 +7,7 @@ module Pod
         parsed_options = parse_options(options)
         return build_failure_response(details: :invalid_options) if parsed_options.empty?
 
-        db = Pod::Storage::SQL.new(db: pod_db_dir)
+        db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
         if db.query("select id from podcasts where id = #{podcast_id}").empty?
           return build_failure_response(details: :not_found)
         end

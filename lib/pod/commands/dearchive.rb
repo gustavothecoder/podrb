@@ -4,7 +4,7 @@ module Pod
   module Commands
     class Dearchive < Base
       def call(episode_id)
-        db = Pod::Storage::SQL.new(db: pod_db_dir)
+        db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
 
         if db.query("select id from episodes where id = #{episode_id}").empty?
           return build_failure_response(details: :not_found)

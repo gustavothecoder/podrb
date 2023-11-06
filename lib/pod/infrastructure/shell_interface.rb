@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Pod
+module Infrastructure
   module ShellInterface
     def self.call(args)
       return if args.nil? || args[:cmd].nil?

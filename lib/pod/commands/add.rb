@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "../feed_parser"
+require_relative "../infrastructure/feed_parser"
 
 module Pod
   module Commands
     class Add < Base
       def call(feed, options = {})
-        parsed_feed = Pod::FeedParser.call(feed)
+        parsed_feed = Infrastructure::FeedParser.call(feed)
         parsed_options = parse_options(options)
 
         if missing_data?(parsed_feed)

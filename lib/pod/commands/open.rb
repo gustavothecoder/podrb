@@ -1,6 +1,6 @@
 module Pod
   module Commands
-    class Open < Base
+    class Open < Pod::Commands::BaseRunner
       def call(episode_id, options = {})
         parsed_options = parse_options(options)
 

@@ -2,7 +2,7 @@
 
 module Pod
   module Commands
-    class Update < Base
+    class Update < Pod::Commands::BaseRunner
       def call(podcast_id, options = {})
         parsed_options = parse_options(options)
         return build_failure_response(details: :invalid_options) if parsed_options.empty?

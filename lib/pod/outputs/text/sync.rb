@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Sync < ::Pod::Outputs::Base
+      class Sync < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :podcast_synchronized

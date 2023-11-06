@@ -2,7 +2,7 @@
 
 module Pod
   module Commands
-    class Archive < Base
+    class Archive < Pod::Commands::BaseRunner
       def call(episode_id)
         db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
 

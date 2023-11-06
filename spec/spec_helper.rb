@@ -28,8 +28,8 @@ RSpec.configure do |config|
     end
 
     if test.metadata[:populate_db]
-      Pod::Commands::Add.call("./spec/fixtures/soft_skills_engineering.xml")
-      Pod::Commands::Add.call(
+      Pod::Commands::Add::Runner.call("./spec/fixtures/soft_skills_engineering.xml")
+      Pod::Commands::Add::Runner.call(
         "./spec/fixtures/fabio_akita.xml",
         {"sync_url" => "https://www.fabio.com/feed.xml"}
       )

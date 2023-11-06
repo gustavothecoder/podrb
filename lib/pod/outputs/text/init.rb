@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Init < ::Pod::Outputs::Base
+      class Init < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :already_initialized

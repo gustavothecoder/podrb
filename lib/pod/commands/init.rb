@@ -4,7 +4,7 @@ require "fileutils"
 
 module Pod
   module Commands
-    class Init < Base
+    class Init < Pod::Commands::BaseRunner
       def call
         return build_failure_response(details: :home_not_found) if home_dir.nil?
 

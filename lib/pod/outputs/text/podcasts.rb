@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Podcasts < ::Pod::Outputs::Base
+      class Podcasts < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :records_found

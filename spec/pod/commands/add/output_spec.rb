@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Add do
+RSpec.describe Pod::Commands::Add::Output do
   describe "#call" do
     context "when the podcast is successfully added" do
       it "generates the correct message" do

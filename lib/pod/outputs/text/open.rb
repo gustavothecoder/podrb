@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Open < ::Pod::Outputs::Base
+      class Open < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :not_found

@@ -2,7 +2,7 @@
 
 module Pod
   module Commands
-    class Podcasts < Base
+    class Podcasts < Pod::Commands::BaseRunner
       ALL_COLUMNS = %w[id name description feed website].freeze
       private_constant :ALL_COLUMNS
 

@@ -34,9 +34,9 @@ module Pod
     def add(feed)
       puts "Adding the podcast..."
 
-      result = Pod::Commands::Add.call(feed, options)
+      result = Pod::Commands::Add::Runner.call(feed, options)
 
-      puts Pod::Outputs::Text::Add.call(result)
+      puts Pod::Commands::Add::Output.call(result)
     end
 
     desc "podcasts", "List the podcast records"

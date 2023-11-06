@@ -2,7 +2,7 @@
 
 module Pod
   module Commands
-    class Dearchive < Base
+    class Dearchive < Pod::Commands::BaseRunner
       def call(episode_id)
         db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
 

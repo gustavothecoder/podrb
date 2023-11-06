@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Add do
+RSpec.describe Pod::Commands::Add::Runner do
   before do
     @db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
   end

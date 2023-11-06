@@ -2,7 +2,7 @@
 
 module Pod
   module Commands
-    class Base
+    class BaseRunner
       def self.call(*args)
         command = new
         if command.method(:call).parameters.empty?

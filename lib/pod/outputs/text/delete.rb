@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Delete < ::Pod::Outputs::Base
+      class Delete < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :podcast_deleted

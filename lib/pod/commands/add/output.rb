@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Pod
-  module Outputs
-    module Text
-      class Add < ::Pod::Outputs::Base
+  module Commands
+    module Add
+      class Output < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :successfully_added

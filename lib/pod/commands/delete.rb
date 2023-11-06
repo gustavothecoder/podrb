@@ -2,7 +2,7 @@
 
 module Pod
   module Commands
-    class Delete < Base
+    class Delete < Pod::Commands::BaseRunner
       def call(podcast_id)
         db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
 

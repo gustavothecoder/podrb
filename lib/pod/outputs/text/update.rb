@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Update < ::Pod::Outputs::Base
+      class Update < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :podcast_updated

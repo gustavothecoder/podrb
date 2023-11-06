@@ -3,8 +3,8 @@
 require "tabulo"
 
 module Pod
-  module Outputs
-    class Base
+  module Commands
+    class BaseOutput
       def self.call(context = {})
         new(context).call
       end

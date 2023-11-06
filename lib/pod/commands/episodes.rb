@@ -1,6 +1,6 @@
 module Pod
   module Commands
-    class Episodes < Base
+    class Episodes < Pod::Commands::BaseRunner
       ALL_COLUMNS = %w[id title release_date duration link].freeze
       private_constant :ALL_COLUMNS
 

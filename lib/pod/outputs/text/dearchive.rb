@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Dearchive < ::Pod::Outputs::Base
+      class Dearchive < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :episode_dearchived

@@ -3,7 +3,7 @@
 module Pod
   module Outputs
     module Text
-      class Archive < ::Pod::Outputs::Base
+      class Archive < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :episode_archived

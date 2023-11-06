@@ -4,7 +4,7 @@ require_relative "../infrastructure/feed_parser"
 
 module Pod
   module Commands
-    class Sync < Base
+    class Sync < Pod::Commands::BaseRunner
       def call(podcast_id)
         db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
         podcast = db.query("select feed from podcasts where id = #{podcast_id}").first

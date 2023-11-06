@@ -52,9 +52,9 @@ module Pod
     method_option :order_by, type: :string, default: "id", desc: "Choose how pod will order the episodes."
     method_option :all, type: :boolean, default: false, desc: "List archived episodes too."
     def episodes(podcast_id)
-      result = Pod::Commands::Episodes.call(podcast_id, options)
+      result = Pod::Commands::Episodes::Runner.call(podcast_id, options)
 
-      puts Pod::Outputs::Text::Episodes.call(result)
+      puts Pod::Commands::Episodes::Output.call(result)
     end
 
     desc "open EPISODE_ID", "Open a episode in the browser"

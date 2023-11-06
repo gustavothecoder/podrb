@@ -6,7 +6,7 @@ RSpec.describe Pod::Commands::Dearchive do
   describe "#call", :init_pod do
     context "when episode is found", :populate_db do
       it "dearchive the episode and returns a success response" do
-        db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+        db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
         Pod::Commands::Archive.call(1)
         result = described_class.call(1)

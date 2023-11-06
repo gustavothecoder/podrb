@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "sqlite3"
-require_relative "../infrastructure/dto"
+require_relative "../dto"
 
-module Pod
+module Infrastructure
   module Storage
     class SQL
       def initialize(db:)

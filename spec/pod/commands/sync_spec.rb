@@ -6,7 +6,7 @@ RSpec.describe Pod::Commands::Sync do
   describe "#call", :init_pod do
     context "when there are new episodes", :populate_db do
       it "returns a success response and create records for the new episodes" do
-        db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+        db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
         before_episode_titles = db.query(
           "select title from episodes where podcast_id = 1"
@@ -37,7 +37,7 @@ RSpec.describe Pod::Commands::Sync do
 
     context "when the podcast is already up to date", :populate_db do
       it "returns a success response, but does not create any records" do
-        db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+        db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
         before_episode_titles = db.query(
           "select title from episodes where podcast_id = 1"

@@ -4,7 +4,7 @@ require_relative "../../support/test_helpers"
 
 RSpec.describe Pod::Commands::Add do
   before do
-    @db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+    @db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
   end
 
   describe "#call", :init_pod do

@@ -12,7 +12,7 @@ module Pod
 
         FileUtils.mkdir_p(pod_config_dir)
 
-        db = Pod::Storage::SQL.new(db: pod_db_dir)
+        db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
         db.execute <<-SQL
           create table podcasts (
             id integer primary key,
@@ -37,7 +37,7 @@ module Pod
         SQL
 
         build_success_response(details: :successfully_initialized)
-      rescue SystemCallError, Pod::Storage::Exceptions::CantStartConnection
+      rescue SystemCallError, Infrastructure::Storage::Exceptions::CantStartConnection
         build_failure_response(details: :cannot_create_initial_config)
       end
     end

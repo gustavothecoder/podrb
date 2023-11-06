@@ -13,7 +13,7 @@ module Pod
           return build_failure_response(details: :badly_formatted)
         end
 
-        db = Pod::Storage::SQL.new(db: pod_db_dir)
+        db = Infrastructure::Storage::SQL.new(db: pod_db_dir)
         db.transaction do
           podcast = parsed_feed.podcast
           podcast_feed = parsed_options["sync_url"] || podcast.feed
@@ -48,7 +48,7 @@ module Pod
         end
 
         build_success_response(details: :successfully_added)
-      rescue Pod::Storage::Exceptions::ConstraintViolation
+      rescue Infrastructure::Storage::Exceptions::ConstraintViolation
         build_failure_response(details: :already_added)
       end
 

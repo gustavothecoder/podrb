@@ -7,7 +7,7 @@ RSpec.describe Pod::Commands::Archive do
     context "when episode is found", :populate_db do
       it "archive the episode and returns a success response" do
         current_date = Time.now.iso8601
-        db = Pod::Storage::SQL.new(db: TestHelpers::Path.db_dir)
+        db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
         result = described_class.call(1)
 

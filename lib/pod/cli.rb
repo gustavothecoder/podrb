@@ -4,7 +4,7 @@ require "thor"
 
 require_relative "commands"
 require_relative "outputs/text"
-require_relative "storage/sql"
+require_relative "infrastructure/storage/sql"
 require_relative "infrastructure/shell_interface"
 
 module Pod

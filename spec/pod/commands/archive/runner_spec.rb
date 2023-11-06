@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Archive do
+RSpec.describe Pod::Commands::Archive::Runner do
   describe "#call", :init_pod do
     context "when episode is found", :populate_db do
       it "archive the episode and returns a success response" do

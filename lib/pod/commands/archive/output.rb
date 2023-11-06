@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Pod
-  module Outputs
-    module Text
-      class Archive < ::Pod::Commands::BaseOutput
+  module Commands
+    module Archive
+      class Output < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :episode_archived

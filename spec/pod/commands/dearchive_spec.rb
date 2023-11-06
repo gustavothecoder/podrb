@@ -8,7 +8,7 @@ RSpec.describe Pod::Commands::Dearchive do
       it "dearchive the episode and returns a success response" do
         db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
-        Pod::Commands::Archive.call(1)
+        Pod::Commands::Archive::Runner.call(1)
         result = described_class.call(1)
 
         expect(result[:status]).to eq(:success)

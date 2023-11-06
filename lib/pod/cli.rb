@@ -70,9 +70,9 @@ module Pod
 
     desc "archive EPISODE_ID", "Archive the episode"
     def archive(episode_id)
-      result = Pod::Commands::Archive.call(episode_id)
+      result = Pod::Commands::Archive::Runner.call(episode_id)
 
-      puts Pod::Outputs::Text::Archive.call(result)
+      puts Pod::Commands::Archive::Output.call(result)
     end
 
     desc "dearchive EPISODE_ID", "Dearchive the episode."

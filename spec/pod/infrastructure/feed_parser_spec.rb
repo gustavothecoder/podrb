@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../support/test_helpers"
+require_relative "../../support/test_helpers"
 
-RSpec.describe Pod::FeedParser do
+RSpec.describe Infrastructure::FeedParser do
   describe "#call" do
     context "when the feed is successfully parsed" do
       it "returns a feed entity with the expected data" do

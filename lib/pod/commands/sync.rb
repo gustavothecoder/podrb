@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../feed_parser"
+require_relative "../infrastructure/feed_parser"
 
 module Pod
   module Commands
@@ -10,7 +10,7 @@ module Pod
         podcast = db.query("select feed from podcasts where id = #{podcast_id}").first
         return build_failure_response(details: :not_found) if podcast.nil?
 
-        parsed_feed = Pod::FeedParser.call(podcast.feed)
+        parsed_feed = Infrastructure::FeedParser.call(podcast.feed)
         parsed_feed.episodes.each do |e|
           db.execute <<-SQL
               insert or ignore into episodes

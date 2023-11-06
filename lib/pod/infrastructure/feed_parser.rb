@@ -3,9 +3,9 @@
 require "net/http"
 require "feedjira"
 
-require_relative "infrastructure/dto"
+require_relative "dto"
 
-module Pod
+module Infrastructure
   module FeedParser
     def self.call(feed)
       content = if File.exist?(feed)

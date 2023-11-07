@@ -52,9 +52,9 @@ module Pod
     method_option :order_by, type: :string, default: "id", desc: "Choose how pod will order the episodes."
     method_option :all, type: :boolean, default: false, desc: "List archived episodes too."
     def episodes(podcast_id)
-      result = Pod::Commands::Episodes.call(podcast_id, options)
+      result = Pod::Commands::Episodes::Runner.call(podcast_id, options)
 
-      puts Pod::Outputs::Text::Episodes.call(result)
+      puts Pod::Commands::Episodes::Output.call(result)
     end
 
     desc "open EPISODE_ID", "Open a episode in the browser"
@@ -70,23 +70,23 @@ module Pod
 
     desc "archive EPISODE_ID", "Archive the episode"
     def archive(episode_id)
-      result = Pod::Commands::Archive.call(episode_id)
+      result = Pod::Commands::Archive::Runner.call(episode_id)
 
-      puts Pod::Outputs::Text::Archive.call(result)
+      puts Pod::Commands::Archive::Output.call(result)
     end
 
     desc "dearchive EPISODE_ID", "Dearchive the episode."
     def dearchive(episode_id)
-      result = Pod::Commands::Dearchive.call(episode_id)
+      result = Pod::Commands::Dearchive::Runner.call(episode_id)
 
-      puts Pod::Outputs::Text::Dearchive.call(result)
+      puts Pod::Commands::Dearchive::Output.call(result)
     end
 
     desc "delete PODCAST_ID", "Delete the podcast from pod's database."
     def delete(podcast_id)
-      result = Pod::Commands::Delete.call(podcast_id)
+      result = Pod::Commands::Delete::Runner.call(podcast_id)
 
-      puts Pod::Outputs::Text::Delete.call(result)
+      puts Pod::Commands::Delete::Output.call(result)
     end
 
     desc "sync PODCAST_ID", "Sync the podcast."

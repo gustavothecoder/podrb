@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Episodes do
+RSpec.describe Pod::Commands::Episodes::Runner do
   describe  "#call", :init_pod do
     context "when there are episodes", :populate_db do
       it "returns a success response with the table records" do
@@ -82,7 +82,7 @@ RSpec.describe Pod::Commands::Episodes do
 
     context "when there are archived episodes", :populate_db do
       it "ignores them" do
-        Pod::Commands::Archive.call(3)
+        Pod::Commands::Archive::Runner.call(3)
         result = described_class.call(1)
 
         expect(result[:status]).to eq(:success)
@@ -102,7 +102,7 @@ RSpec.describe Pod::Commands::Episodes do
 
     context "when there are archived episodes, but the all option is used", :populate_db do
       it "returns all episodes, including the archived ones" do
-        Pod::Commands::Archive.call(3)
+        Pod::Commands::Archive::Runner.call(3)
         result = described_class.call(1, {"all" => true})
 
         expect(result[:status]).to eq(:success)

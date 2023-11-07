@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Dearchive do
+RSpec.describe Pod::Commands::Delete::Output do
   describe "#call" do
-    context "when episode was dearchived" do
+    context "when podcast was deleted" do
       it "generates the correct message" do
-        response = described_class.new(status: :success, details: :episode_dearchived)
+        response = described_class.new(status: :success, details: :podcast_deleted)
         expected_output = <<~OUTPUT
-          Episode successfully dearchived!
+          Podcast successfully deleted!
         OUTPUT
 
         msg = response.call
@@ -15,11 +15,11 @@ RSpec.describe Pod::Outputs::Text::Dearchive do
       end
     end
 
-    context "when episode was not found" do
+    context "when podcast was not found" do
       it "generates the correct message" do
         response = described_class.new(status: :failure, details: :not_found)
         expected_output = <<~OUTPUT
-          Episode not found
+          Podcast not found
         OUTPUT
 
         msg = response.call

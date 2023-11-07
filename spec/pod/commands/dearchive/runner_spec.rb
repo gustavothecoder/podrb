@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Dearchive do
+RSpec.describe Pod::Commands::Dearchive::Runner do
   describe "#call", :init_pod do
     context "when episode is found", :populate_db do
       it "dearchive the episode and returns a success response" do
         db = Infrastructure::Storage::SQL.new(db: TestHelpers::Path.db_dir)
 
-        Pod::Commands::Archive.call(1)
+        Pod::Commands::Archive::Runner.call(1)
         result = described_class.call(1)
 
         expect(result[:status]).to eq(:success)

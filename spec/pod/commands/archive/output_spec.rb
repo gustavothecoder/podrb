@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Archive do
+RSpec.describe Pod::Commands::Archive::Output do
   describe "#call" do
     context "when episode was archived" do
       it "generates the correct message" do

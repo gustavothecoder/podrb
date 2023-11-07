@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 module Pod
-  module Outputs
-    module Text
-      class Delete < ::Pod::Commands::BaseOutput
+  module Commands
+    module Dearchive
+      class Output < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
-          when :podcast_deleted
+          when :episode_dearchived
             <<~OUTPUT
-              Podcast successfully deleted!
+              Episode successfully dearchived!
             OUTPUT
           when :not_found
             <<~OUTPUT
-              Podcast not found
+              Episode not found
             OUTPUT
           end
         end

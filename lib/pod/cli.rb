@@ -24,9 +24,9 @@ module Pod
     def init
       puts "Creating config files..."
 
-      result = Pod::Commands::Init.call
+      result = Pod::Commands::Init::Runner.call
 
-      puts Pod::Outputs::Text::Init.call(result)
+      puts Pod::Commands::Init::Output.call(result)
     end
 
     desc "add FEED", "Adds a podcast to the Pod database"

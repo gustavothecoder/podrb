@@ -24,7 +24,7 @@ RSpec.configure do |config|
     ENV["HOME"] = TMP_DIR
 
     if test.metadata[:init_pod]
-      Pod::Commands::Init.call
+      Pod::Commands::Init::Runner.call
     end
 
     if test.metadata[:populate_db]

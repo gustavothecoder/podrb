@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Init do
+RSpec.describe Pod::Commands::Init::Output do
   describe "#call" do
     context "when home is not found" do
       it "returns the correct message" do

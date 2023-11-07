@@ -61,11 +61,11 @@ module Pod
     method_option :browser, type: :string, default: "firefox", desc: "Choose the browser."
     method_option :archive, type: :boolean, default: false, desc: "Archive the episode."
     def open(episode_id)
-      result = Pod::Commands::Open.call(episode_id, options)
+      result = Pod::Commands::Open::Runner.call(episode_id, options)
 
       Infrastructure::ShellInterface.call(result[:metadata])
 
-      puts Pod::Outputs::Text::Open.call(result)
+      puts Pod::Commands::Open::Output.call(result)
     end
 
     desc "archive EPISODE_ID", "Archive the episode"

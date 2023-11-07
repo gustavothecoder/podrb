@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Open do
+RSpec.describe Pod::Commands::Open::Output do
   describe "#call" do
     context "when the episode was not found" do
       it "generates the correct output" do

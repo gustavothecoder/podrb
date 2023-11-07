@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "text/podcasts"
-require_relative "text/open"
 require_relative "text/sync"
 require_relative "text/update"
 

@@ -3,7 +3,6 @@
 require "thor"
 
 require_relative "commands"
-require_relative "outputs/text"
 require_relative "infrastructure/storage/sql"
 require_relative "infrastructure/shell_interface"
 
@@ -24,9 +23,9 @@ module Pod
     def init
       puts "Creating config files..."
 
-      result = Pod::Commands::Init.call
+      result = Pod::Commands::Init::Runner.call
 
-      puts Pod::Outputs::Text::Init.call(result)
+      puts Pod::Commands::Init::Output.call(result)
     end
 
     desc "add FEED", "Adds a podcast to the Pod database"
@@ -42,9 +41,9 @@ module Pod
     desc "podcasts", "List the podcast records"
     method_option :fields, type: :array, default: [], desc: "Select the fields that will be displayed."
     def podcasts
-      result = Pod::Commands::Podcasts.call(options)
+      result = Pod::Commands::Podcasts::Runner.call(options)
 
-      puts Pod::Outputs::Text::Podcasts.call(result)
+      puts Pod::Commands::Podcasts::Output.call(result)
     end
 
     desc "episodes PODCAST_ID", "List the podcast episodes"
@@ -61,11 +60,11 @@ module Pod
     method_option :browser, type: :string, default: "firefox", desc: "Choose the browser."
     method_option :archive, type: :boolean, default: false, desc: "Archive the episode."
     def open(episode_id)
-      result = Pod::Commands::Open.call(episode_id, options)
+      result = Pod::Commands::Open::Runner.call(episode_id, options)
 
       Infrastructure::ShellInterface.call(result[:metadata])
 
-      puts Pod::Outputs::Text::Open.call(result)
+      puts Pod::Commands::Open::Output.call(result)
     end
 
     desc "archive EPISODE_ID", "Archive the episode"
@@ -91,17 +90,17 @@ module Pod
 
     desc "sync PODCAST_ID", "Sync the podcast."
     def sync(podcast_id)
-      result = Pod::Commands::Sync.call(podcast_id)
+      result = Pod::Commands::Sync::Runner.call(podcast_id)
 
-      puts Pod::Outputs::Text::Sync.call(result)
+      puts Pod::Commands::Sync::Output.call(result)
     end
 
     desc "update PODCAST_ID", "Update the podcast attributes."
     method_option :feed, type: :string, default: "", desc: "Define the podcast feed."
     def update(podcast_id)
-      result = Pod::Commands::Update.call(podcast_id, options)
+      result = Pod::Commands::Update::Runner.call(podcast_id, options)
 
-      puts Pod::Outputs::Text::Update.call(result)
+      puts Pod::Commands::Update::Output.call(result)
     end
   end
 end

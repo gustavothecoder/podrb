@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Sync do
+RSpec.describe Pod::Commands::Sync::Output do
   describe "#call" do
     context "when the podcast is successfully synchronized" do
       it "generates the correct message" do

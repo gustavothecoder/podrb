@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Pod
-  module Outputs
-    module Text
-      class Init < ::Pod::Commands::BaseOutput
+  module Commands
+    module Init
+      class Output < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :already_initialized

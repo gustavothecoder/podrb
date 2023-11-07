@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Pod
-  module Outputs
-    module Text
-      class Podcasts < ::Pod::Commands::BaseOutput
+  module Commands
+    module Podcasts
+      class Output < ::Pod::Commands::BaseOutput
         def call
           case @context[:details]
           when :records_found

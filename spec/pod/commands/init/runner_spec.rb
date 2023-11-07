@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Init do
+RSpec.describe Pod::Commands::Init::Runner do
   describe "#call" do
     context "when no error occurs" do
       it "returns a success response and creates the initial pod config" do

@@ -12,12 +12,16 @@ require_relative "commands/delete/runner"
 require_relative "commands/delete/output"
 require_relative "commands/episodes/runner"
 require_relative "commands/episodes/output"
-
-require_relative "commands/init"
-require_relative "commands/podcasts"
-require_relative "commands/open"
-require_relative "commands/sync"
-require_relative "commands/update"
+require_relative "commands/init/runner"
+require_relative "commands/init/output"
+require_relative "commands/open/runner"
+require_relative "commands/open/output"
+require_relative "commands/podcasts/runner"
+require_relative "commands/podcasts/output"
+require_relative "commands/sync/runner"
+require_relative "commands/sync/output"
+require_relative "commands/update/runner"
+require_relative "commands/update/output"
 
 module Pod
   module Commands; end

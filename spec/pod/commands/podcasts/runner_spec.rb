@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../support/test_helpers"
+require_relative "../../../support/test_helpers"
 
-RSpec.describe Pod::Commands::Podcasts do
+RSpec.describe Pod::Commands::Podcasts::Runner do
   describe  "#call", :init_pod do
     context "when there are podcasts", :populate_db do
       it "returns a success response with the table records" do

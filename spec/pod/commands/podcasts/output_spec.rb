@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Podcasts do
+RSpec.describe Pod::Commands::Podcasts::Output do
   describe "#call" do
     context "when there are records to show" do
       it "generates the correct output" do

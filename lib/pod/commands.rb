@@ -20,8 +20,8 @@ require_relative "commands/podcasts/runner"
 require_relative "commands/podcasts/output"
 require_relative "commands/sync/runner"
 require_relative "commands/sync/output"
-
-require_relative "commands/update"
+require_relative "commands/update/runner"
+require_relative "commands/update/output"
 
 module Pod
   module Commands; end

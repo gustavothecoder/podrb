@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pod::Outputs::Text::Update do
+RSpec.describe Pod::Commands::Update::Output do
   describe "#call" do
     context "when podcast was updated" do
       it "generates the correct message" do

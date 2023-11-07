@@ -3,7 +3,6 @@
 require "thor"
 
 require_relative "commands"
-require_relative "outputs/text"
 require_relative "infrastructure/storage/sql"
 require_relative "infrastructure/shell_interface"
 
@@ -99,9 +98,9 @@ module Pod
     desc "update PODCAST_ID", "Update the podcast attributes."
     method_option :feed, type: :string, default: "", desc: "Define the podcast feed."
     def update(podcast_id)
-      result = Pod::Commands::Update.call(podcast_id, options)
+      result = Pod::Commands::Update::Runner.call(podcast_id, options)
 
-      puts Pod::Outputs::Text::Update.call(result)
+      puts Pod::Commands::Update::Output.call(result)
     end
   end
 end

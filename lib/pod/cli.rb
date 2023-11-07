@@ -91,9 +91,9 @@ module Pod
 
     desc "sync PODCAST_ID", "Sync the podcast."
     def sync(podcast_id)
-      result = Pod::Commands::Sync.call(podcast_id)
+      result = Pod::Commands::Sync::Runner.call(podcast_id)
 
-      puts Pod::Outputs::Text::Sync.call(result)
+      puts Pod::Commands::Sync::Output.call(result)
     end
 
     desc "update PODCAST_ID", "Update the podcast attributes."

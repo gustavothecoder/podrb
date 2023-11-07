@@ -18,8 +18,9 @@ require_relative "commands/open/runner"
 require_relative "commands/open/output"
 require_relative "commands/podcasts/runner"
 require_relative "commands/podcasts/output"
+require_relative "commands/sync/runner"
+require_relative "commands/sync/output"
 
-require_relative "commands/sync"
 require_relative "commands/update"
 
 module Pod

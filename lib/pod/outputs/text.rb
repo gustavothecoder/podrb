@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "text/sync"
 require_relative "text/update"
 
 module Pod

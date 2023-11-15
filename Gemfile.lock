@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pod (1.0.0)
+    pod (0.1.0)
       feedjira (~> 3.2)
       sqlite3 (~> 1.5)
       tabulo (~> 2.8)

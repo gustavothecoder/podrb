@@ -14,16 +14,16 @@ module Pod
           parsed_feed = Infrastructure::FeedParser.call(podcast.feed)
           parsed_feed.episodes.each do |e|
             db.execute <<-SQL
-                insert or ignore into episodes
-                (title, release_date, podcast_id, duration, link, external_id)
-                values (
-                  "#{escape_double_quotes(e.title)}",
-                  "#{escape_double_quotes(e.release_date)}",
-                  #{podcast_id},
-                  "#{escape_double_quotes(e.duration)}",
-                  "#{escape_double_quotes(e.link)}",
-                  "#{e.external_id}"
-                );
+              insert or ignore into episodes
+              (title, release_date, podcast_id, duration, link, external_id)
+              values (
+                "#{escape_double_quotes(e.title)}",
+                "#{escape_double_quotes(e.release_date)}",
+                #{podcast_id},
+                "#{escape_double_quotes(e.duration)}",
+                "#{escape_double_quotes(e.link)}",
+                "#{e.external_id}"
+              );
             SQL
           end
           build_success_response(details: :podcast_synchronized)

@@ -3,13 +3,25 @@
 require_relative "../support/test_helpers"
 
 RSpec.describe Pod::CLI do
-  describe "input interpretation" do
+  describe "input interpretation", :init_pod do
     context "when the input is invalid" do
       it "tells the user that the command was not found" do
         result = TestHelpers::CLI.run_cmd("pod invalid")
 
         expect(result).to eq('Could not find command "invalid".')
       end
+    end
+  end
+
+  describe "init ensuring" do
+    it "returns an error message when user tries to run pod without initialization" do
+      expected_output = <<~OUTPUT
+        Missing config files. Run `pod init` first.
+      OUTPUT
+
+      result = TestHelpers::CLI.run_cmd("pod podcasts")
+
+      expect(result).to eq(expected_output.chomp)
     end
   end
 

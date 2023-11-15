@@ -13,6 +13,17 @@ module Pod
       true
     end
 
+    def self.start(given_args = ARGV, config = {})
+      command = given_args.first
+      does_not_require_config = %w[version -V --version init].include?(command)
+      pod_initialized = Dir.exist?(ENV["HOME"] + "/.config/pod")
+      if does_not_require_config || pod_initialized
+        super
+      else
+        puts "Missing config files. Run `pod init` first."
+      end
+    end
+
     desc "version", "Displays the pod version"
     map %w[-V --version] => :version
     def version

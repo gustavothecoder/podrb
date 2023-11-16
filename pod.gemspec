@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name = "pod"
   spec.version = Pod::VERSION
   spec.authors = ["Gustavo Ribeiro"]
-  spec.email = ["g2_ribeiro@hotmail.com"]
+  spec.email = ["grdev@tutanota.com"]
 
   spec.summary = "Minimalist CLI to manage podcasts"
   spec.homepage = "https://github.com/gustavothecoder/pod"

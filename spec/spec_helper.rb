@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "pod"
+require "podrb"
 require "fileutils"
 
 TMP_DIR = (Dir.pwd + "/tmp").freeze
@@ -23,13 +23,13 @@ RSpec.configure do |config|
 
     ENV["HOME"] = TMP_DIR
 
-    if test.metadata[:init_pod]
-      Pod::Commands::Init::Runner.call
+    if test.metadata[:init_podrb]
+      Podrb::Commands::Init::Runner.call
     end
 
     if test.metadata[:populate_db]
-      Pod::Commands::Add::Runner.call("./spec/fixtures/soft_skills_engineering.xml")
-      Pod::Commands::Add::Runner.call(
+      Podrb::Commands::Add::Runner.call("./spec/fixtures/soft_skills_engineering.xml")
+      Podrb::Commands::Add::Runner.call(
         "./spec/fixtures/fabio_akita.xml",
         {"sync_url" => "https://www.fabio.com/feed.xml"}
       )

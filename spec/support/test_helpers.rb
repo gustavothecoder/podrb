@@ -18,11 +18,11 @@ module TestHelpers
       home_dir = ENV["HOME"]
       return "" if home_dir.nil?
 
-      home_dir + "/.config/pod"
+      home_dir + "/.config/podrb"
     end
 
     def db_dir
-      config_dir + "/pod.db"
+      config_dir + "/podrb.db"
     end
   end
 

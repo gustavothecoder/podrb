@@ -1,13 +1,13 @@
-# Pod
+# Podrb
 
 Simple CLI to manage podcasts.
 
 ## Installation
 
-Pod is a Ruby gem published on RubyGems, so you can install running:
+Podrb is a Ruby gem published on RubyGems, so you can install running:
 
 ```bash
-$ gem install pod
+$ gem install podrb
 ```
 
 ## Usage
@@ -15,61 +15,61 @@ $ gem install pod
 ### Initialization
 
 ```bash
-$ pod init
+$ podrb init
 ```
 
 ### Adding a podcast
 
 ```bash
-$ pod add ./path/to/rss.xml
-$ pod add https://podcast.com/feed.xml
+$ podrb add ./path/to/rss.xml
+$ podrb add https://podcast.com/feed.xml
 ```
 
 ### Listing podcasts
 
 ```bash
-$ pod podcasts
-$ pod podcasts --fields=id name
+$ podrb podcasts
+$ podrb podcasts --fields=id name
 ```
 
 ### Listing episodes
 
 ```bash
-$ pod episodes PODCAST_ID
-$ pod podcasts PODCAST_ID --fields=id title duration
-$ pod podcasts PODCAST_ID --order-by=duration
+$ podrb episodes PODCAST_ID
+$ podrb podcasts PODCAST_ID --fields=id title duration
+$ podrb podcasts PODCAST_ID --order-by=duration
 ```
 
 ### Opening an episode
 
 ```bash
-$ pod open EPISODE_ID
-$ pod open EPISODE_ID --browser=firefox
-$ pod open EPISODE_ID --archive
+$ podrb open EPISODE_ID
+$ podrb open EPISODE_ID --browser=firefox
+$ podrb open EPISODE_ID --archive
 ```
 
 ### Archiving an episode
 
 ```bash
-$ pod archive EPISODE_ID
+$ podrb archive EPISODE_ID
 ```
 
 ### Dearchiving an episode
 
 ```bash
-$ pod dearchive EPISODE_ID
+$ podrb dearchive EPISODE_ID
 ```
 
 ### Synchronizing a podcast
 
 ```bash
-$ pod sync PODCAST_ID
+$ podrb sync PODCAST_ID
 ```
 
 ### Updating the podcast
 
 ```bash
-$ pod update PODCAST_ID --feed=https://newfeed.com/feed.xml
+$ podrb update PODCAST_ID --feed=https://newfeed.com/feed.xml
 ```
 
 ## Development
@@ -78,7 +78,7 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/gustavothecoder/pod.
+Bug reports and pull requests are welcome on GitHub at https://github.com/gustavothecoder/podrb.
 
 ## License
 

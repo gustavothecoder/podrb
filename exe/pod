@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require "pod"
-
-Pod::CLI.start

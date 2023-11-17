@@ -2,6 +2,8 @@
 
 Simple CLI to manage podcasts.
 
+https://github.com/gustavothecoder/podrb/assets/57065994/d7bc28cc-0cf5-428e-a2b1-e59e55ff09c0
+
 ## Installation
 
 Podrb is a Ruby gem published on RubyGems, so you can install running:
